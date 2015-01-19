@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b9d7ff7b-697b-4b20-9854-018cb5a36a43" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="b9d7ff7b-697b-4b20-9854-018cb5a36a43" name="Default" comment="" />
     <ignored path="appointment.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -47,7 +44,7 @@
       <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/apps/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="76" column="108" selection-start="2963" selection-end="2963" vertical-scroll-proportion="1.0132626" vertical-offset="910" max-vertical-offset="2941">
+            <state line="77" column="76" selection-start="3040" selection-end="3040" vertical-scroll-proportion="0.52196836" vertical-offset="1012" max-vertical-offset="2941">
               <folding />
             </state>
           </provider>
@@ -852,10 +849,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1360" height="738" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32590052" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32933104" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32933104" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32418525" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32761577" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32952815" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1043,7 +1040,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/apps/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="108" selection-start="2963" selection-end="2963" vertical-scroll-proportion="1.0132626" vertical-offset="910" max-vertical-offset="2941">
+        <state line="77" column="76" selection-start="3040" selection-end="3040" vertical-scroll-proportion="0.52196836" vertical-offset="1012" max-vertical-offset="2941">
           <folding />
         </state>
       </provider>
