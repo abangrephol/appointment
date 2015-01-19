@@ -1,6 +1,6 @@
 var config = {
-    "server":"http://dev2.wirednest.net",
-    "apiPath" : "http://dev2.wirednest.net/api/"
+    "server":"http://appointment.dev6.wirednest.net",
+    "apiPath" : "http://appointment.dev6.wirednest.net/api/"
 };
 (function() {
     "use strict";

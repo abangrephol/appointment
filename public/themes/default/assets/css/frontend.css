@@ -258,3 +258,6 @@
 .app-cart span.service-name{
     font-size: 18px;
 }
+.content.container{
+    padding-top:100px;
+}

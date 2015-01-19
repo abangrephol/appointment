@@ -38,6 +38,11 @@ Route::api(['version'   =>  'v1' , 'prefix' => 'api','before'=>'apikey'],functio
     });
     Route::get('/','SiteController@iframe');
 });
+Route::get('mail',function(){
+    Mail::send(Theme::uses('default')->layout('default')->which('emails.appointment'), array('firstname'=>'Revi'), function($message){
+        $message->to('abang.zeze@gmail.com', 'Yanto')->subject('Welcome to the Laravel 4 Auth App!');
+    });
+});
 Route::get('login', array('as'=>'login','uses'=>"SiteController@login") );
 Route::post('login', function(){
     $user = array(
