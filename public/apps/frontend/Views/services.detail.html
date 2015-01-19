@@ -1,0 +1,27 @@
+<div class="col-xs-12">
+    <div>
+        <a ui-sref="service.list" class="btn btn-black btn-sm mb20"><i class="fa fa-chevron-left mr5"></i>&nbsp;Back to services</a>
+    </div>
+    <div class="panel panel-default panel-f">
+        <div class="panel-heading">
+            <div class="panel-btns pull-right">
+
+            </div>
+            <h2 class="panel-title">
+                {{ service.name }}
+            </h2>
+            <div class="row">
+                <div class="col-xs-12">
+                    <p>{{ service.description }}</p>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="panel-body">
+            <span class="well well-sm"><i class="fa fa-tag"></i>&nbsp;{{ setting.currency }} {{ service.price }}</span>
+            <span class="well well-sm"><i class="glyphicon glyphicon-time"></i>&nbsp;{{ service.duration }} Minutes </span>
+        </div>
+
+    </div>
+</div>

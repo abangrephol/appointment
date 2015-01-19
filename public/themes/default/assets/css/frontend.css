@@ -1,0 +1,260 @@
+
+#appsysContainer {
+    background-color: transparent;
+    padding: 20px;
+    min-height: 800px;
+}
+.panel-f{
+    border: 1px solid #eee;
+}
+.slide-reveal.ng-enter {
+    -webkit-transition:0.5s linear all;
+    -moz-transition:0.5s linear all;
+    -o-transition:0.5s linear all;
+    transition:0.5s linear all;
+
+    opacity:0.5;
+    position:relative;
+    opacity:0;
+    top:10px;
+}
+.slide-reveal.ng-enter-active {
+    top:0;
+    opacity:1;
+}
+
+.expand.ng-enter {
+    -webkit-transition:0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) all;
+    -moz-transition:0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) all;
+    -o-transition:0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) all;
+    transition:0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) all;
+
+    opacity:0;
+    max-height:0;
+    overflow:hidden;
+}
+.expand.ng-enter-active {
+    opacity:1;
+    max-height:40px;
+}
+
+.expand.ng-leave {
+    -webkit-transition:0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) all;
+    -moz-transition:0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) all;
+    -o-transition:0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) all;
+    transition:0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) all;
+
+    opacity:1;
+    max-height:40px;
+    overflow:hidden;
+}
+.expand.ng-leave-active {
+    opacity:0;
+    max-height:0;
+}
+/* CUSTOM STYLES */
+
+.mb5 {
+    margin-bottom: 5px;
+}
+
+.mb10 {
+    margin-bottom: 10px;
+}
+
+.mb15 {
+    margin-bottom: 15px;
+}
+
+.mb20 {
+    margin-bottom: 20px;
+}
+
+.mb30 {
+    margin-bottom: 30px;
+}
+
+.mb40 {
+    margin-bottom: 40px;
+}
+
+.mr5 {
+    margin-right: 5px;
+}
+
+.mr10 {
+    margin-right: 10px;
+}
+
+.mr20 {
+    margin-right: 20px;
+}
+
+.mr30 {
+    margin-right: 30px;
+}
+
+.mt5 {
+    margin-top: 5px;
+}
+
+.mt10 {
+    margin-top: 10px;
+}
+
+.nomargin {
+    margin: 0;
+}
+
+.noshadow {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.border-right-0 {
+    border-right: 0;
+}
+
+.border-left-0 {
+    border-left: 0;
+}
+
+.nopadding {
+    padding: 0 !important;
+}
+
+.padding-top-0 {
+    padding-top: 0;
+}
+
+.padding5 {
+    padding: 5px;
+}
+
+.padding10 {
+    padding: 10px;
+}
+
+.serif {
+    font-family: 'Georgia, serif';
+}
+
+.italic {
+    font-style: italic;
+}
+
+.dark {
+    color: #333;
+}
+
+.width100p {
+    width: 100%;
+}
+
+.width20 {
+    width: 20px;
+}
+
+.width30 {
+    width: 30px;
+}
+
+.inblock {
+    display: inline-block;
+}
+.btn-date{
+    padding: 0 !important;
+    border : 0;
+    line-height: 30px;
+}
+.btn-date-selected{
+    background: #428bca !important; color: #ffffff !important;
+}
+.tableDate td,th{
+
+}
+.tableDate .btn{
+    font-weight: normal !important;
+}
+.tableDate .today{
+    background-color: #ffe96f;
+}
+.tableDate .today.active{
+    background-color: #000 !important;
+}
+.tableDate .today.disable{
+    background-color: #da384b !important;
+}
+.tableDate .past{
+    background-color: #aaaaaa !important;
+    color: #333333;
+}
+.tableDate .disable{
+    background-color: #da384b;
+    opacity: 1;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.6);
+    color: #eeeeee;
+}
+.btn-make{
+    padding: 5px 20px 3px;
+}
+
+.tableTime ul {padding-bottom:13px;}
+.tableTime li {
+    display:inline-block;
+    vertical-align:top;
+    width:60px;
+    height:30px;
+    margin:0 2px 5px 2px;
+    border:1px solid #e9e9e9;
+    transition: border-color 0.3s ease-in-out;
+    -webkit-transition: border-color 0.3s ease-in-out;
+}
+.tableTime li:hover, .tableTime li.active {border:2px solid #333;}
+.tableTime li a {
+    display:block;
+    text-transform:uppercase;
+    text-align:center;
+    line-height:28px;
+    font-size:11px;
+    color:#666;
+    transition: color 0.3s ease-in-out;
+    -webkit-transition: color 0.3s ease-in-out;
+}
+.tableTime li.disable{
+    border:2px solid #aaaaaa;
+}
+.tableTime li.disable a{
+    line-height:26px;
+    color:#FFFFFF;
+    background-color: #aaaaaa;
+}
+.tableTime li.disable:hover a {
+    line-height:26px;
+    color:#fff;
+}
+.tableTime li a,
+.tableTime li:hover a {
+    line-height:26px;
+    color:#333;
+}
+.app-cart ul,li{
+    list-style: none;
+
+}
+.app-cart {
+    font-size: 14px;
+    padding: 0;
+}
+.app-cart li:not(:last-child){
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #eeeeee;
+}
+.app-cart span{
+    display: block;
+}
+.app-cart span.service-name{
+    font-size: 18px;
+}

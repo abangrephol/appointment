@@ -1,0 +1,1 @@
+<div ui-view="list" class="row slide-reveal" ></div>

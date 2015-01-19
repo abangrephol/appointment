@@ -1,0 +1,1 @@
+E:\Programs\xampp\htdocs\Wirednest\appointment\public/themes/default/views/payments/index.blade.php

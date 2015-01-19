@@ -1,0 +1,2 @@
+<!--a class="btn btn-xs btn-primary btn-app-customer-view" data-action= "{{ route('tab.app.customer.view', $model->id ) }}" href="#">View&nbsp;<span class="fa fa-chevron-right"></span></a-->
+<a class="btn btn-xs btn-primary btn-app-customer-choose" data-customer-id = "{{ $model->id  }}" href="#">Choose&nbsp;<span class="fa fa-chevron-right"></span></a>
