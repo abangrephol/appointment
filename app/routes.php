@@ -85,7 +85,7 @@ Route::group(array('before'=>'auth'),function(){
     });
 
     Route::resource("apikey","ApiKeysController");
-    Route::resource("app","AppointmentsController");
+    Route::resource("appointment","AppointmentsController");
     Route::resource("appservice","AppointmentServicesController");
     Route::resource("customer","CustomersController");
     Route::resource("employee","EmployeesController");
@@ -95,9 +95,9 @@ Route::group(array('before'=>'auth'),function(){
     Route::resource("subscription","SubscriptionsController");
     Route::resource("user","UsersController");
 
-    Route::post("app/{id}","AppointmentsController@update");
-    Route::get('/app/delete/{id}',"AppointmentsController@delete");
-    Route::delete('app/delete/{id}',"AppointmentsController@destroy");
+    Route::post("appointment/{id}","AppointmentsController@update");
+    Route::get('/appointment/delete/{id}',"AppointmentsController@delete");
+    Route::delete('appointment/delete/{id}',"AppointmentsController@destroy");
 
     Route::post("user/{id}","UsersController@update");
     Route::get('/user/delete/{id}',"UsersController@delete");
@@ -122,10 +122,6 @@ Route::group(array('before'=>'auth'),function(){
     Route::post("serviceloc/{id}","ServiceLocationsController@update");
     Route::get('/serviceloc/delete/{id}',"ServiceLocationsController@delete");
     Route::delete('serviceloc/delete/{id}',"ServiceLocationsController@destroy");
-
-    Route::post("app/{id}","AppointmentsController@update");
-    Route::get('/app/delete/{id}',"AppointmentsController@delete");
-    Route::delete('app/delete/{id}',"AppointmentsController@destroy");
 
     Route::group(array('prefix'=>'dt'),function(){
         Route::get('users', array('as'=>'dt.users', 'uses'=>'UsersController@getDatatableAll'));

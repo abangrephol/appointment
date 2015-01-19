@@ -26,7 +26,7 @@ class AppointmentsController extends \BaseController {
 
             })
             ->addColumn('action',function($model){
-                return Theme::widget("buttonColumn", array("model" => $model,'route'=>'app'))->render();
+                return Theme::widget("buttonColumn", array("model" => $model,'route'=>'appointment'))->render();
             })
             ->searchColumns('confirmation_number', 'note','price_total')
             ->orderColumns('created_at')
@@ -47,7 +47,7 @@ class AppointmentsController extends \BaseController {
     public  function  tabAppCustomer(){
         $theme = $this->theme;
         $routeUrl = 'dt.customers.appointment';
-        $theme->set('route','app');
+        $theme->set('route','appointment');
         $columns = array('First Name','Last Name','Address','Action');
 
         $data = array("usersColumn" => $columns,'routeUrl'=>$routeUrl);
@@ -77,7 +77,7 @@ class AppointmentsController extends \BaseController {
 	{
         $theme = $this->theme;
         $theme->set('title','Appointments');
-        $theme->set('route','app');
+        $theme->set('route','appointment');
         $routeUrl = 'dt.appointments';
         $columns = array('Confirmation Number','Note','Total Price','Order Date', 'Status','Action');
 

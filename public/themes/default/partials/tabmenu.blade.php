@@ -22,7 +22,7 @@
            class="btn btn-lg btn-primary tooltips"
            data-placement="bottom" data-toggle="tooltip"
            data-original-title="Dashboard"><i class="fa fa-home"></i></a>
-        <a href="#app" data-toggle="tab" data-remote-url="{{ url('app') }}"
+        <a href="#app" data-toggle="tab" data-remote-url="{{ url('appointment') }}"
            class="btn btn-lg btn-white tooltips"
            data-placement="bottom" data-toggle="tooltip"
            data-original-title="Appointments"><i class="fa fa-calendar-o"></i></a>
