@@ -152,6 +152,7 @@ class UsersController extends \BaseController {
                 $user->last = $formFields['last'];//Input::get('last');
                 $user->email = $formFields['email'];//Input::get('email'); ;
                 $user->username = $formFields['username'];//Input::get('username');
+                $user->subscription_id = Auth::user()->subscription_id;
                 if(isset($formFields['is_active']))
                     $user->is_active = $formFields['is_active'];
                 else

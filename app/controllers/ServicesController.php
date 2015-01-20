@@ -91,6 +91,7 @@ class ServicesController extends \BaseController {
                 $model->duration = $formFields['duration'];
                 $model->interval = $formFields['interval'];
                 $model->capacity = $formFields['capacity'];
+                $model->subscription_id = $model->subscription_id = Auth::user()->subscription_id;
                 if($model->save())
                     return \Response::json(array("success"=>true,"flashMessage"=>"Create Service Success."));
                 else
