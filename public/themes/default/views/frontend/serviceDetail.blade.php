@@ -1,7 +1,7 @@
 <div  ng-controller="datepicker">
     <div class="col-xs-12">
         <a ui-sref="service.list" class="btn btn-black btn-sm mb20"><i class="fa fa-chevron-left mr5"></i>&nbsp;Back to services</a>
-        <a ui-sref="service.cart" class="btn btn-black btn-sm mb20 pull-right"><i class="fa fa-shopping-cart mr5"></i>&nbsp;Cart</a>
+        <a ui-sref="service.cart" class="btn btn-black btn-sm mb20"><i class="fa fa-shopping-cart mr5"></i>&nbsp;Confirmation</a>
     </div>
     <div class="col-xs-12 col-sm-4">
         <div class="panel panel-default panel-f">

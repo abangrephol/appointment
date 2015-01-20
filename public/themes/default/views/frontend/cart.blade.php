@@ -17,7 +17,7 @@
     <div class="col-sm-3">
         <div class="panel panel-default panel-f mb20">
             <div class="panel-heading">
-                <h2 class="panel-title panel-title-alt">Items</h2>
+                <h2 class="panel-title panel-title-alt">Selected Services</h2>
             </div>
             <div class="panel-body">
                 <ul class="app-cart">
@@ -30,7 +30,7 @@
                 </ul>
             </div>
         </div>
-        <div class="panel panel-default panel-f ">
+        <div class="panel panel-default panel-f hidden">
             <div class="panel-heading">
                 <h2 class="panel-title panel-title-alt">Prices</h2>
             </div>
@@ -62,7 +62,7 @@
                 <h2 class="panel-title panel-title-alt">Checkout Form</h2>
             </div>
             <div class="panel-body">
-                {{ Form::open(array('class'=>'form form-horizontal')) }}
+                {{ Form::open(array('class'=>'form form-horizontal','name'=>'form')) }}
                 <div class="alert alert-success hidden">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                     <div id="successMessage"></div>
@@ -70,59 +70,69 @@
                 <div class="form-group">
                     {{ Form::label('first', 'First Name', array('class' => 'col-sm-3 control-label')) }}
                     <div class="col-sm-6">
-                        {{ Form::text('first', null , array('class'=>'form-control','placeholder' => 'Enter First Name','required')) }}
+                        {{ Form::text('first', null ,
+                        array('class'=>'form-control','placeholder' => 'Enter First Name','required',
+                        'ng-model'=>'customer.first'
+                        )) }}
 
                     </div>
                 </div>
                 <div class="form-group">
                     {{ Form::label('last', 'Last Name', array('class' => 'col-sm-3 control-label')) }}
                     <div class="col-sm-6">
-                        {{ Form::text('last', null , array('class'=>'form-control','placeholder' => 'Enter Last Name')) }}
+                        {{ Form::text('last', null , array('class'=>'form-control','placeholder' => 'Enter Last Name',
+                        'ng-model'=>'customer.last')) }}
 
                     </div>
                 </div>
                 <div class="form-group">
                     {{ Form::label('email', 'Email', array('class' => 'col-sm-3 control-label')) }}
                     <div class="col-sm-6">
-                        {{ Form::text('text', null , array('class'=>'form-control','placeholder' => 'Enter Email','required')) }}
+                        {{ Form::text('text', null , array('class'=>'form-control','placeholder' => 'Enter Email','required',
+                        'ng-model'=>'customer.email')) }}
 
                     </div>
                 </div>
                 <div class="form-group">
                     {{ Form::label('address_1', 'Address', array('class' => 'col-sm-3 control-label')) }}
                     <div class="col-sm-6">
-                        {{ Form::text('address_1', null , array('class'=>'form-control','placeholder' => 'Enter Address','required')) }}
+                        {{ Form::text('address_1', null , array('class'=>'form-control','placeholder' => 'Enter Address','required',
+                        'ng-model'=>'customer.address_1')) }}
 
                     </div>
                 </div>
                 <div class="form-group">
                     {{ Form::label('address_2', 'Address 2', array('class' => 'col-sm-3 control-label')) }}
                     <div class="col-sm-6">
-                        {{ Form::text('address_2', null , array('class'=>'form-control','placeholder' => 'Enter Address')) }}
+                        {{ Form::text('address_2', null , array('class'=>'form-control','placeholder' => 'Enter Address',
+                        'ng-model'=>'customer.address_2')) }}
 
                     </div>
                 </div>
                 <div class="form-group">
                     {{ Form::label('zip', 'ZIP', array('class' => 'col-sm-3 control-label')) }}
                     <div class="col-sm-2">
-                        {{ Form::text('zip', null , array('class'=>'form-control','placeholder' => 'Enter ZIP','required')) }}
+                        {{ Form::text('zip', null , array('class'=>'form-control','placeholder' => 'Enter ZIP','required',
+                        'ng-model'=>'customer.zip')) }}
 
                     </div>
                 </div>
                 <div class="form-group">
                     {{ Form::label('note', 'Notes', array('class' => 'col-sm-3 control-label')) }}
                     <div class="col-sm-6">
-                        {{ Form::textarea('note', null , array('class'=>'','rows'=>5,'placeholder' => 'Enter Notes','required')) }}
+                        {{ Form::textarea('note', null , array('class'=>'','rows'=>5,'placeholder' => 'Enter Notes','required',
+                        'ng-model'=>'customer.note')) }}
 
                     </div>
                 </div>
-                {{ Form::close() }}
                 <div class="row">
                     <div class="col-sm-offset-3 col-sm-6">
-                        <a class="btn btn-sm" ui-sref="service.checkout">Continue</a>
-                        <a class="btn btn-sm">Cancel</a>
+                        <input type="button" class="btn btn-sm" ng-click="submit(customer)" value="Continue" />
+                        <a ui-sref="service.list" class="btn btn-sm">Cancel</a>
                     </div>
                 </div>
+                {{ Form::close() }}
+
             </div>
         </div>
     </div>

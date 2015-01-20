@@ -20,4 +20,16 @@ angular.module('appSys.services.service', [
     }])
     .factory('availableTime',['$http',function($http){
         var path = config.apiPath+''
+    }])
+    .factory('serviceRes',['$http',function($http){
+        return {
+                save: function(data,customer,payment){
+                    return $http({
+                        method: 'POST',
+                        url: config.apiPath+'services/checkout?apikey='+api_key,
+                        headers: { 'Content-Type' : 'application/x-www-form-urlencoded' },
+                        data: {services: data,customer:customer,payment:payment}
+                    })
+                }
+            }
     }]);

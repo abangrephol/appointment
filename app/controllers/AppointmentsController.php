@@ -100,7 +100,89 @@ class AppointmentsController extends \BaseController {
 
         return $theme->layout('formApp')->scope('appointments.create')->render();
 	}
+    /**
+     * Store a newly created resource in storage.
+     * POST /api/services/checkout
+     *
+     * @return Response
+     */
+    public function storeAPI(){
+        DB::beginTransaction();
+        try{
 
+            $serviceData = Input::json('services');
+
+            $customerData = Input::json('customer');
+
+            $customerType = "new";
+            $paymentData = Input::json('payment');
+
+            $confirmNumber = Str::upper(Str::quickRandom(3)).time() ;
+
+            $customerId = "";
+
+            if($customerType=="new"){
+                $customer = new Customer();
+                $customer->first = $customerData['first'];
+                $customer->last = $customerData['last'];
+                $customer->email = $customerData['email'];
+                $customer->address_1 = $customerData['address_1'];
+
+                $customer->address_2 = isset($customerData['address_2'])?$customerData['address_2']:"";
+
+                $customer->zip = $customerData['zip'];
+
+                $customer->subscription_id = Session::get('sid')[0];
+                if(!$customer->save()){
+                    DB::rollBack();
+                    API::response()->array(array("failed"=>true,"flashMessage"=>"Create Appointment Error. Customer data wrong.","message"=>$e->getMessage()));
+                }
+                $customerId = $customer->id;
+            }else{
+                $customerId = $customerData;
+            }
+            $appointmentId = "";
+            $appointment = new Appointment();
+
+            $appointment->customer_id = $customerId;
+            $appointment->confirmation_number = $confirmNumber;
+            $appointment->price = $paymentData['price'];
+            $appointment->price_tax = $paymentData['price_tax'];
+            $appointment->price_deposit = $paymentData['price_deposit'];
+            $appointment->price_total = $paymentData['price_total'];
+            $appointment->note = isset($customerData['note'])?$customerData['note']:"";
+            $appointment->subscription_id = Session::get('sid')[0];
+
+            if(!$appointment->save()){
+                DB::rollBack();
+                API::response()->array(array("failed"=>true,"flashMessage"=>"Create Appointment Failed. Appointment data wrong entry.","message"=>$appointment->validationErrors));
+            }else{
+                $appointmentId = $appointment->id;
+            }
+
+            foreach($serviceData as $service){
+                $serviceModel = new AppointmentService();
+                $serviceModel->appointment_id = $appointmentId;
+                $serviceModel->service_id = $service['id'];
+                $serviceModel->date = $service['date'];
+                $serviceModel->time = $service['time'];
+
+
+                if(!$serviceModel->save()){
+                    DB::rollBack();
+                    API::response()->array(array("failed"=>true,"flashMessage"=>"Create Appointment Error. Appointment Service failed.","message"=>$appointment->validationErrors));
+                }
+            }
+            DB::commit();
+            Mail::send(Theme::uses('default')->layout('default')->which('emails.appointment'), array('firstname'=>$customer['first']), function($message){
+                $message->to(Input::json('customer')['email'], Input::json('customer')['first'].' '.Input::json('customer')['last'])->subject('Appointment Created');
+            });
+            return API::response()->array(array("success"=>true,"flashMessage"=>"Create Appointment Success."));
+        }catch (\Exception $e){
+            DB::rollBack();
+            return API::response()->array(array("failed"=>true,"flashMessage"=>"Create Appointment Error. Database error.","message"=>$e->getMessage()));
+        }
+    }
 	/**
 	 * Store a newly created resource in storage.
 	 * POST /appointments

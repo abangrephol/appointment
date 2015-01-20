@@ -1,6 +1,6 @@
 var config = {
-    "server":"http://appointment.dev6.wirednest.net",
-    "apiPath" : "http://appointment.dev6.wirednest.net/api/"
+    "server":"http://localhost:2121",
+    "apiPath" : "http://localhost:2121/api/"
 };
 (function() {
     "use strict";

@@ -28,7 +28,7 @@ return array(
 	|
 	*/
 
-	'host' => 'smtp.gmail.com',
+	'host' => 'smtp.mandrillapp.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return array(
 	|
 	*/
 
-	'password' => "wirednest",
+	'password' => "qJUZrKK_BECKO3i7_FYjXQ",
 
 	/*
 	|--------------------------------------------------------------------------

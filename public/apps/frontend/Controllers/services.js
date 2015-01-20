@@ -183,8 +183,13 @@ $service = angular.module('appSys.services', [
                 views : {
                     'list': {
                         templateUrl: config.server+'/api/angview/cart?apikey='+api_key,
-                        controller: ['$scope','$stateParams','filterApi',
-                            function($scope,$stateParams,filterApi){
+                        resolve:{
+                            serviceRes: function(serviceRes){
+                                return serviceRes
+                            }
+                        },
+                        controller: ['$scope','$stateParams','filterApi','serviceRes',
+                            function($scope,$stateParams,filterApi,serviceRes){
                                 $scope.carts = filterApi.filter($scope.$storage.cart,$scope.apikey);
                                 $scope.empty = false;
                                 if($scope.carts.length>0){
@@ -195,10 +200,24 @@ $service = angular.module('appSys.services', [
                                     $scope.tax = Number($scope.servicesPrice * 0.1).toFixed(2);
                                     $scope.totalPrice = Number($scope.servicesPrice + ($scope.servicesPrice * 0.1)).toFixed(2);
                                     $scope.totalDeposit = Number($scope.servicesPrice * 0.2).toFixed(2);
+                                    $scope.payment = {
+                                        price : $scope.servicesPrice,
+                                        price_tax : $scope.tax,
+                                        price_deposit : $scope.totalDeposit,
+                                        price_total : $scope.totalPrice
+                                    };
                                 }else{
                                     $scope.empty = true;
                                 }
-
+                                $scope.submit = function(customer){
+                                    serviceRes.save($scope.carts,customer,$scope.payment)
+                                        .success(function(data){
+                                            $scope.$state.transitionTo('service.checkout');
+                                        })
+                                        .error(function(data){
+                                            console.log('ohno');
+                                        })
+                                }
                             }
                         ]
                     }

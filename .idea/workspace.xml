@@ -2,12 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9d7ff7b-697b-4b20-9854-018cb5a36a43" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/themes/default/views/emails/appointment.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/AppointmentsController.php" afterPath="$PROJECT_DIR$/app/controllers/AppointmentsController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/apps/app.js" afterPath="$PROJECT_DIR$/public/apps/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/themes/default/assets/css/frontend.css" afterPath="$PROJECT_DIR$/public/themes/default/assets/css/frontend.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/themes/default/views/emails/appointment.blade.php" afterPath="$PROJECT_DIR$/public/themes/default/views/emails/appointment.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/themes/default/views/frontend/cart.blade.php" afterPath="$PROJECT_DIR$/public/themes/default/views/frontend/cart.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/themes/default/views/frontend/checkout.blade.php" afterPath="$PROJECT_DIR$/public/themes/default/views/frontend/checkout.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/mail.php" afterPath="$PROJECT_DIR$/app/config/mail.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/routes.php" afterPath="$PROJECT_DIR$/app/routes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/themes/default/views/frontend/service.blade.php" afterPath="$PROJECT_DIR$/public/themes/default/views/frontend/service.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/themes/default/views/frontend/serviceDetail.blade.php" afterPath="$PROJECT_DIR$/public/themes/default/views/frontend/serviceDetail.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/apps/frontend/Controllers/services-service.js" afterPath="$PROJECT_DIR$/public/apps/frontend/Controllers/services-service.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/apps/frontend/Controllers/services.js" afterPath="$PROJECT_DIR$/public/apps/frontend/Controllers/services.js" />
     </list>
     <ignored path="appointment.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,16 +47,7 @@
       <file leaf-file-name="routes.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="83" selection-start="1700" selection-end="1700" vertical-scroll-proportion="-10.115385" vertical-offset="434" max-vertical-offset="2771">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="appointment.blade.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/themes/default/views/emails/appointment.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="5" selection-start="5" selection-end="5" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="102">
+            <state line="45" column="7" selection-start="1771" selection-end="2011" vertical-scroll-proportion="-9.461538" vertical-offset="519" max-vertical-offset="2805">
               <folding />
             </state>
           </provider>
@@ -60,70 +56,79 @@
       <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/apps/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="30" selection-start="275" selection-end="275" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2941">
+            <state line="2" column="38" selection-start="91" selection-end="91" vertical-scroll-proportion="0.0" vertical-offset="1479" max-vertical-offset="2941">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mail.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/config/mail.php">
+      <file leaf-file-name="checkout.blade.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/themes/default/views/frontend/checkout.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="95" column="28" selection-start="3177" selection-end="3177" vertical-scroll-proportion="-20.076923" vertical-offset="1093" max-vertical-offset="2210">
+            <state line="4" column="68" selection-start="221" selection-end="221" vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="272">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AppointmentsController.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="services.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/apps/frontend/Controllers/services.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="214" column="50" selection-start="11237" selection-end="11243" vertical-scroll-proportion="-14.04" vertical-offset="3287" max-vertical-offset="4964">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="services-service.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/apps/frontend/Controllers/services-service.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="30" column="79" selection-start="1135" selection-end="1135" vertical-scroll-proportion="0.0" vertical-offset="98" max-vertical-offset="680">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="services-time.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/apps/frontend/Controllers/services-time.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AppointmentsController.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/AppointmentsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="83" selection-start="999" selection-end="1004" vertical-scroll-proportion="-9.333333" vertical-offset="0" max-vertical-offset="4165">
+            <state line="175" column="12" selection-start="6375" selection-end="6388" vertical-scroll-proportion="0.6389961" vertical-offset="2644" max-vertical-offset="5559">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="frontend.css" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/themes/default/assets/css/frontend.css">
+      <file leaf-file-name="UsersController.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/UsersController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="249" column="30" selection-start="4046" selection-end="4046" vertical-scroll-proportion="0.53264606" vertical-offset="3923" max-vertical-offset="4556">
+            <state line="177" column="27" selection-start="5484" selection-end="5490" vertical-scroll-proportion="-1.372549" vertical-offset="2939" max-vertical-offset="3604">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BaseController.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/BaseController.php">
+      <file leaf-file-name="cart.blade.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/themes/default/views/frontend/cart.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="64" selection-start="518" selection-end="559" vertical-scroll-proportion="-15.692307" vertical-offset="102" max-vertical-offset="867">
+            <state line="64" column="82" selection-start="2932" selection-end="2932" vertical-scroll-proportion="26.192308" vertical-offset="1769" max-vertical-offset="2499">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="appsys.form-app.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/themes/default/assets/js/appsys.form-app.js">
+      <file leaf-file-name="appointment.blade.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/themes/default/views/emails/appointment.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="38" selection-start="417" selection-end="420" vertical-scroll-proportion="47.84" vertical-offset="1383" max-vertical-offset="6409">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_tab_confirm.blade.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/themes/default/views/appointments/_tab_confirm.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="53" selection-start="2522" selection-end="2522" vertical-scroll-proportion="-11.769231" vertical-offset="765" max-vertical-offset="2550">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/apps/frontend/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="0" selection-start="733" selection-end="733" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
+            <state line="3" column="13" selection-start="152" selection-end="152" vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="153">
               <folding />
             </state>
           </provider>
@@ -158,22 +163,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/public/themes/default/views/frontend/cart.blade.php" />
-        <option value="$PROJECT_DIR$/public/apps/frontend/Controllers/services.js" />
-        <option value="$PROJECT_DIR$/public/themes/default/views/frontend/checkout.blade.php" />
-        <option value="$PROJECT_DIR$/public/themes/default/views/frontend/index.blade.php" />
-        <option value="$PROJECT_DIR$/app/filters.php" />
-        <option value="$PROJECT_DIR$/public/themes/default/partials/header.blade.php" />
         <option value="$PROJECT_DIR$/public/apps/frontend/app.js" />
         <option value="$PROJECT_DIR$/public/themes/default/partials/tabmenu.blade.php" />
-        <option value="$PROJECT_DIR$/app/controllers/AppointmentsController.php" />
         <option value="$PROJECT_DIR$/public/themes/default/views/appointments/edit.blade.php" />
         <option value="$PROJECT_DIR$/public/themes/default/views/appointments/_tab_confirm.blade.php" />
-        <option value="$PROJECT_DIR$/public/apps/app.js" />
-        <option value="$PROJECT_DIR$/app/config/mail.php" />
-        <option value="$PROJECT_DIR$/public/themes/default/views/emails/appointment.blade.php" />
-        <option value="$PROJECT_DIR$/app/routes.php" />
         <option value="$PROJECT_DIR$/public/themes/default/assets/css/frontend.css" />
+        <option value="$PROJECT_DIR$/app/config/mail.php" />
+        <option value="$PROJECT_DIR$/public/apps/app.js" />
+        <option value="$PROJECT_DIR$/public/themes/default/views/frontend/service.blade.php" />
+        <option value="$PROJECT_DIR$/public/themes/default/views/frontend/serviceDetail.blade.php" />
+        <option value="$PROJECT_DIR$/public/themes/default/views/frontend/checkout.blade.php" />
+        <option value="$PROJECT_DIR$/public/themes/default/views/frontend/cart.blade.php" />
+        <option value="$PROJECT_DIR$/public/apps/frontend/Controllers/services-service.js" />
+        <option value="$PROJECT_DIR$/app/routes.php" />
+        <option value="$PROJECT_DIR$/public/apps/frontend/Controllers/services.js" />
+        <option value="$PROJECT_DIR$/public/themes/default/views/emails/appointment.blade.php" />
+        <option value="$PROJECT_DIR$/app/controllers/AppointmentsController.php" />
       </list>
     </option>
   </component>
@@ -368,6 +373,36 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="frontend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="appointment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="appointment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="themes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="default" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="emails" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -395,36 +430,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="appointment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="appointment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="themes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="default" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -749,7 +754,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32952815" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24961948" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32952815" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27195686" sideWeight="0.67066896" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17642526" sideWeight="0.67066896" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21156773" sideWeight="0.40136054" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32874355" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
@@ -799,114 +804,141 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/themes/default/views/frontend/index.blade.php">
+    <entry file="file://$PROJECT_DIR$/public/themes/default/views/frontend/service.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="19" selection-start="19" selection-end="19" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="556">
+        <state line="2" column="8" selection-start="54" selection-end="175" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="646">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/apps/frontend/Controllers/services.js">
+    <entry file="file://$PROJECT_DIR$/public/themes/default/views/frontend/serviceDetail.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="249" column="9" selection-start="11878" selection-end="11879" vertical-scroll-proportion="-7.24" vertical-offset="4052" max-vertical-offset="4641">
-          <folding />
+        <state line="3" column="129" selection-start="324" selection-end="324" vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="2244">
+          <folding>
+            <marker date="1421710096900" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1421710096900" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1421710096900" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1421710096900" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1421710096900" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1421710096900" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1421710096900" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1421710096900" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1421710096900" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1421710096900" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1421710096900" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1421710096900" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1421710096900" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1421710096900" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1421710096900" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1421710096900" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1421710096900" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1421710096900" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1421710096900" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1421710096900" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1421710096900" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1421710096900" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1421710096900" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1421710096900" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1421710096900" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1421710096900" expanded="false" signature="-1:-1" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/themes/default/partials/header.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="373" selection-end="373" vertical-scroll-proportion="-6.5384617" vertical-offset="0" max-vertical-offset="272">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/themes/default/partials/tabmenu.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="77" selection-start="1762" selection-end="1762" vertical-scroll-proportion="-6.5" vertical-offset="239" max-vertical-offset="935">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/themes/default/views/appointments/index.blade.php">
+    <entry file="file://$PROJECT_DIR$/public/apps/frontend/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="569">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/themes/default/views/appointments/edit.blade.php">
+    <entry file="file://$PROJECT_DIR$/public/apps/frontend/Controllers/utils-service.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="57" selection-start="57" selection-end="57" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2839">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="582">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/themes/default/assets/js/appsys.form-app.js">
+    <entry file="file://$PROJECT_DIR$/public/apps/frontend/Controllers/settings.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="38" selection-start="417" selection-end="420" vertical-scroll-proportion="47.84" vertical-offset="1383" max-vertical-offset="6409">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/themes/default/views/appointments/_tab_confirm.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="53" selection-start="2522" selection-end="2522" vertical-scroll-proportion="-11.769231" vertical-offset="765" max-vertical-offset="2550">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/apps/frontend/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="0" selection-start="733" selection-end="733" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/AppointmentsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="83" selection-start="999" selection-end="1004" vertical-scroll-proportion="-9.333333" vertical-offset="0" max-vertical-offset="4165">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/BaseController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="64" selection-start="518" selection-end="559" vertical-scroll-proportion="-15.692307" vertical-offset="102" max-vertical-offset="867">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/themes/default/views/emails/appointment.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="5" selection-start="5" selection-end="5" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="556">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="714">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/apps/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="30" selection-start="275" selection-end="275" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2941">
+        <state line="2" column="38" selection-start="91" selection-end="91" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2941">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/mail.php">
+    <entry file="file://$PROJECT_DIR$/public/themes/default/views/frontend/checkout.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="28" selection-start="3177" selection-end="3177" vertical-scroll-proportion="-20.076923" vertical-offset="1093" max-vertical-offset="2210">
+        <state line="4" column="68" selection-start="221" selection-end="221" vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="272">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_ide_helper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2262" column="10" selection-start="71749" selection-end="71806" vertical-scroll-proportion="0.3480663" vertical-offset="38163" max-vertical-offset="226746">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/UsersController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="177" column="27" selection-start="5484" selection-end="5490" vertical-scroll-proportion="-1.372549" vertical-offset="2939" max-vertical-offset="3604">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/apps/frontend/Controllers/services-time.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="582">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/apps/frontend/Controllers/services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="214" column="50" selection-start="11237" selection-end="11243" vertical-scroll-proportion="-14.04" vertical-offset="3287" max-vertical-offset="4964">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/apps/frontend/Controllers/services-service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="79" selection-start="1135" selection-end="1135" vertical-scroll-proportion="0.0" vertical-offset="98" max-vertical-offset="680">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="83" selection-start="1700" selection-end="1700" vertical-scroll-proportion="-10.115385" vertical-offset="434" max-vertical-offset="2771">
+        <state line="45" column="7" selection-start="1771" selection-end="2011" vertical-scroll-proportion="-9.461538" vertical-offset="519" max-vertical-offset="2805">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/themes/default/assets/css/frontend.css">
+    <entry file="file://$PROJECT_DIR$/public/themes/default/views/frontend/cart.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="249" column="30" selection-start="4046" selection-end="4046" vertical-scroll-proportion="0.53264606" vertical-offset="3923" max-vertical-offset="4556">
+        <state line="64" column="82" selection-start="2932" selection-end="2932" vertical-scroll-proportion="26.192308" vertical-offset="1769" max-vertical-offset="2499">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/themes/default/views/emails/appointment.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="13" selection-start="152" selection-end="152" vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="153">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/AppointmentsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="175" column="12" selection-start="6375" selection-end="6388" vertical-scroll-proportion="0.6389961" vertical-offset="2644" max-vertical-offset="5559">
           <folding />
         </state>
       </provider>

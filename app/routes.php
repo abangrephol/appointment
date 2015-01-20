@@ -27,6 +27,8 @@ Route::api(['version'   =>  'v1' , 'prefix' => 'api','before'=>'apikey'],functio
         Route::get('/',function(){
             return Subscription::find(Session::get('sid'))->first()->service->toJson();
         });
+        Route::post('checkout','AppointmentsController@storeAPI');
+        //return API::response()->array(Input::json('services'))->statusCode(200);
     });
     Route::group(array('prefix'=>'angview'),function(){
         Route::get('index','AngularController@index');
