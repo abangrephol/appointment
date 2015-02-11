@@ -55,9 +55,9 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'appointments',
-			'username'  => 'root',
-			'password'  => '',
+			'database'  => 'dev6_appointment',
+			'username'  => 'dev6_appointment',
+			'password'  => 'appointment',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
