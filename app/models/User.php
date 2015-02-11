@@ -26,7 +26,7 @@ class User extends \Cartalyst\Sentry\Users\Eloquent\User implements UserInterfac
         'last_name'                  => 'between:4,50',
         'email'                 => 'required|email',
         'username'              => 'required|alpha_num|min:5',
-        'password'              => 'required|alpha_num|between:4,8|confirmed',
+        'password'              => 'required|alpha_num|min:5|confirmed',
         'password_confirmation' => 'alpha_num|between:4,8',
 
     );
@@ -35,8 +35,8 @@ class User extends \Cartalyst\Sentry\Users\Eloquent\User implements UserInterfac
         'last_name'                  => 'between:4,50',
         'email'                 => 'required|email',
         'username'              => 'required|alpha_num|min:5',
-        'old_password'              => 'required_with:password|alpha_num|between:4,8',
-        'password'          => 'required_with:old_password|alpha_num|between:4,8|confirmed',
-        'password_confirmation' => 'alpha_num|between:4,8',
+        'old_password'              => 'required_with:password|alpha_num|min:5',
+        'password'          => 'required_with:old_password|alpha_num|min:5|confirmed',
+        'password_confirmation' => 'alpha_num|min:5',
     );
 }

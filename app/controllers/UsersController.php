@@ -159,7 +159,6 @@ class UsersController extends \BaseController {
                     $user->activated = 0;
                 if(strlen($formFields['old_password'])>0 && strlen($formFields['password'])>0){
                     $user->password = $formFields['password'];
-                    dd('oke');
                 }
 
 
