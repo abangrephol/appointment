@@ -15,7 +15,7 @@ App::before(function($request)
 {
     header('Access-Control-Allow-Origin: *');
     header('Access-Control-Allow-Methods: *'); //GET, POST, OPTIONS
-    header('Access-Control-Allow-Headers: *'); //Origin, Content-*, Accept, Authorization, X-Request-With
+    header('Access-Control-Allow-Headers: *, apikey '); //Origin, Content-*, Accept, Authorization, X-Request-With
     header('Access-Control-Allow-Credentials: true');
 
 });
@@ -37,9 +37,31 @@ App::after(function($request, $response)
 |
 */
 
+Route::filter('auth.adminapi',function($route,$request){
+    $apikey = $request->header('apikey');
+    $subscription = ApiKey::check($apikey)->first()->subscription->user;
+    dd($subscription);
+    $userModel = Sentry::getUserProvider()->createModel();
+
+    $user =  $userModel->where('api_token',$payload)->first();
+
+    if(!$payload || !$user) {
+
+        $response = Response::json([
+                'error' => true,
+                'message' => 'Not authenticated',
+                'code' => 401],
+            401
+        );
+
+        $response->header('Content-Type', 'application/json');
+        return $response;
+    }
+
+});
 Route::filter('auth', function()
 {
-	if (Auth::guest())
+	/*if (Auth::guest())
 	{
 		if (Request::ajax())
 		{
@@ -49,7 +71,8 @@ Route::filter('auth', function()
 		{
 			return Redirect::guest('login');
 		}
-	}
+	}*/
+    if (!Sentry::check()) return Redirect::route('login');
 });
 
 Route::filter('apikey',function(){
@@ -78,7 +101,7 @@ Route::filter('auth.basic', function()
 
 Route::filter('guest', function()
 {
-	if (Auth::check()) return Redirect::to('/');
+	if (Sentry::check()) return Redirect::to('/');
 });
 
 /*

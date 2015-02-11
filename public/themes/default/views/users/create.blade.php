@@ -8,16 +8,16 @@
         <div id="successMessage"></div>
     </div>
     <div class="form-group">
-        {{ Form::label('first', 'First Name', array('class' => 'col-sm-3 control-label')) }}
+        {{ Form::label('first_name', 'First Name', array('class' => 'col-sm-3 control-label')) }}
         <div class="col-sm-6">
-            {{ Form::text('first', null , array('class'=>'form-control','placeholder' => 'Enter First Name','required')) }}
+            {{ Form::text('first_name', null , array('class'=>'form-control','placeholder' => 'Enter First Name','required')) }}
             <label id="first_error" for="first" class="error" style="display: inline-block;"></label>
         </div>
     </div>
     <div class="form-group">
-        {{ Form::label('last', 'Last Name', array('class' => 'col-sm-3 control-label')) }}
+        {{ Form::label('last_name', 'Last Name', array('class' => 'col-sm-3 control-label')) }}
         <div class="col-sm-6">
-            {{ Form::text('last', null , array('class'=>'form-control','placeholder' => 'Enter Last Name')) }}
+            {{ Form::text('last_name', null , array('class'=>'form-control','placeholder' => 'Enter Last Name')) }}
             <label id="last_error" for="first" class="error" style="display: inline-block;"></label>
         </div>
     </div>

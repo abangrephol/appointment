@@ -151,9 +151,16 @@ return array(
             },
             'form' => function($theme)
             {
+                $theme->asset()->container('header-form')->usePath()->add('tags-style', 'css/bootstrap-tokenfield.css');
+                $theme->asset()->container('header-form')->usePath()->add('typeahead-style', 'css/tokenfield-typeahead.css');
+
+
 
                 $theme->asset()->container('footer-form')->usePath()->add('js-form-autogrow',"js/jquery.autogrow-textarea.js");
                 $theme->asset()->container('footer-form')->usePath()->add('js-form-wizard',"js/bootstrap-wizard.min.js");
+                $theme->asset()->container('footer-form')->usePath()->add('js-form-tags',"js/bootstrap-tokenfield.min.js");
+                $theme->asset()->container('footer-form')->usePath()->add('js-form-typeahead',"js/typeahead.bundle.js");
+
                 $theme->asset()->container('footer-form')->usePath()->add('js-form',"js/appsys.form.js");
             },
             'formApp' => function($theme)

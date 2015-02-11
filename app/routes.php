@@ -46,13 +46,40 @@ Route::get('mail',function(){
     });
 });
 Route::get('login', array('as'=>'login','uses'=>"SiteController@login") );
+Route::get('loginAPI',array(function(){
+    if(Sentry::check())
+        return Redirect::to('/');
+    $subscription = ApiKey::check(Input::get('apikey'));
+    if($subscription->count()>0){
+        $subscription_id = $subscription->first()->subscription_id;
+        $user = Sentry::getUserProvider()->createModel()->where('subscription_id',$subscription_id)->get();
+
+        if($user->count()>0){
+
+            $user = Sentry::findUserById($user->first()->id);
+            Sentry::login($user,true);
+            if (Sentry::check()) {
+                return Redirect::to('/')
+                    ->with('flash_notice', 'You are successfully logged in.');
+            }
+        }
+        // authentication failure! lets go back to the login page
+        return Redirect::to('login')
+            ->with('flash_error', 'Your username/password combination was incorrect.')
+            ->withInput();
+    }
+    return Redirect::to('login')
+        ->with('flash_error', 'Your API was incorrect.')
+        ->withInput();
+
+}) );
 Route::post('login', function(){
     $user = array(
         'username' => Input::get('username'),
         'password' => Input::get('password')
     );
 
-    if (Auth::attempt($user,true)) {
+    if (Sentry::authenticate($user,true)) {
         return Redirect::to('/')
             ->with('flash_notice', 'You are successfully logged in.');
     }
@@ -63,7 +90,7 @@ Route::post('login', function(){
         ->withInput();
 } );
 Route::get('logout', array('as' => 'logout', function () {
-    Auth::logout();
+    Sentry::logout();
 
     return Redirect::route('login')
         ->with('flash_notice', 'You are successfully logged out.');
@@ -83,7 +110,7 @@ Route::group(array('before'=>'auth'),function(){
         Route::get('hours',array('as'=>'setting.hours','uses'=>'SiteController@settingHour'));
         Route::post('hours',array('as'=>'setting.hours','uses'=>function(){
                 try{
-                    Setting::set(Auth::user()->subscription_id.'.app.bussinessHour',Input::get('data'));
+                    Setting::set(Sentry::getUser()->subscription_id.'.app.bussinessHour',Input::get('data'));
                     return Response::json(array('message'=>'Succeed save Business Hours.'));
                 }catch (Exception $e){
                     return Response::json(array('message'=>'Failure to save data'));
@@ -101,6 +128,7 @@ Route::group(array('before'=>'auth'),function(){
     Route::resource("service","ServicesController");
     Route::resource("subscription","SubscriptionsController");
     Route::resource("user","UsersController");
+    Route::resource("customform","CustomFormsController");
 
     Route::post("appointment/{id}","AppointmentsController@update");
     Route::get('/appointment/delete/{id}',"AppointmentsController@delete");
@@ -110,11 +138,14 @@ Route::group(array('before'=>'auth'),function(){
     Route::get('/user/delete/{id}',"UsersController@delete");
     Route::delete('user/delete/{id}',"UsersController@destroy");
 
+    Route::post("customform/{id}","CustomFormsController@update");
+    Route::get('/customform/delete/{id}',"CustomFormsController@delete");
+    Route::delete('customform/delete/{id}',"CustomFormsController@destroy");
 
     Route::post("employee/{id}","EmployeesController@update");
     Route::get('/employee/delete/{id}',"EmployeesController@delete");
     Route::delete('employee/delete/{id}',"EmployeesController@destroy");
-
+    Route::get('employee/specialize/all',"EmployeesController@getSpecialize");
 
     Route::post("customer/{id}","CustomersController@update");
     Route::get('/customer/delete/{id}',"CustomersController@delete");
@@ -141,6 +172,7 @@ Route::group(array('before'=>'auth'),function(){
         Route::get('services', array('as'=>'dt.services', 'uses'=>'ServicesController@getDatatableAll'));
         Route::get('servicelocs', array('as'=>'dt.servicelocs', 'uses'=>'ServiceLocationsController@getDatatableAll'));
         Route::get('appointments', array('as'=>'dt.appointments', 'uses'=>'AppointmentsController@getDatatableAll'));
+        Route::get('customforms', array('as'=>'dt.customforms', 'uses'=>'CustomFormsController@getDatatableAll'));
     });
 
     Route::get('tab/service/{tabId}/{id}',array('as'=>'tab.service','uses'=>'ServicesController@tab'));

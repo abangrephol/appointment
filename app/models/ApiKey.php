@@ -14,7 +14,8 @@ class ApiKey extends Ardent{
     protected $fillable = [];
 
     public static $relationsData = array(
-        'user'  => array(self::BELONGS_TO, 'User')
+        'user'  => array(self::BELONGS_TO, 'User'),
+        'subscription' => array(self::BELONGS_TO,'Subscription')
     );
     public function scopeCheck($scope,$apikey){
         return $scope->where('api_key','=',$apikey)->get();

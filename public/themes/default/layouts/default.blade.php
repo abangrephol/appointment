@@ -19,12 +19,12 @@
         {{ Theme::partial('header') }}
         <div class="contentpanel">
             <div class="row">
-                <div class = "col-xs-12 mb20">
+                <div class = "col-xs-2 mb20">
                         {{ Theme::partial('tabmenu') }}
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12">
+            <!--/div>
+            <div class="row"-->
+                <div class="col-xs-10">
                     <div id="loader-body" class="panel panel-body" style="display: none;">
                         <div id="loader-body-status" class=" text-center" style="display: none;">
                             <h4>

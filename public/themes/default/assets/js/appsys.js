@@ -83,4 +83,7 @@ jQuery(document).ready(function() {
         jQuery('body').delay(350).css({'overflow':'visible'});
     });
     jQuery('.tooltips').tooltip({ container: 'body'});
+    $('.menu-icon a').each(function(){
+        $(this).removeClass('btn-primary').addClass('btn-white');
+    })
 });

@@ -21,7 +21,7 @@ class Employee extends Ardent {
         'title'              => 'between:1,30',
         'phone'              => 'between:4,50',
         'phone_ext'              => 'between:1,6',
-
+        'specialize'         => 'required|min:5'
 
     );
     public  static  $rulesUpdate = array(
@@ -31,6 +31,7 @@ class Employee extends Ardent {
         'title'                  => 'between:1,30',
         'phone'                  => 'between:4,50',
         'phone_ext'              => 'between:1,6',
+        'specialize'         => 'required|min:5'
     );
 
 }

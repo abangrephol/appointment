@@ -12,7 +12,7 @@ class ServicesController extends \BaseController {
     public function getDatatableAll()
     {
 
-        return Datatable::collection(Subscription::find(Auth::user()->subscription_id)->service) //array('id','first','last','email','username','is_active')
+        return Datatable::collection(Subscription::find(Sentry::getUser()->subscription_id)->service) //array('id','first','last','email','username','is_active')
             ->showColumns('name', 'price','duration','interval')
             ->addColumn('active', function($model){
                 if($model->is_active)
@@ -91,7 +91,7 @@ class ServicesController extends \BaseController {
                 $model->duration = $formFields['duration'];
                 $model->interval = $formFields['interval'];
                 $model->capacity = $formFields['capacity'];
-                $model->subscription_id = $model->subscription_id = Auth::user()->subscription_id;
+                $model->subscription_id = $model->subscription_id = Sentry::getUser()->subscription_id;
                 if($model->save())
                     return \Response::json(array("success"=>true,"flashMessage"=>"Create Service Success."));
                 else

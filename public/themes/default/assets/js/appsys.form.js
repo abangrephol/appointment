@@ -108,8 +108,51 @@ $(document).ready(function(){
             }
         });
     }
+    function tagsInput(){
+        var engine = new Bloodhound({
+                remote: {
+                    url: '/employee/specialize/all?term=%QUERY',
+                    filter: function (response) {
+                        return $.map(response, function (special) {
+                            return {
+                                id:special.id,
+                                value: special.value,
+                                label: special.value
+                            };
+                        });
+                    }
+                },
+                datumTokenizer: function(d) {
+                    return Bloodhound.tokenizers.whitespace(d.value);
+                },
+                queryTokenizer: Bloodhound.tokenizers.whitespace
+        });
+
+        engine.initialize();
+        $('#specialize').tokenfield({
+            typeahead: [
+                null,
+                {
+                    name: 'specialize',
+                    displayKey: 'label',
+                    source: engine.ttAdapter()
+                }
+            ],
+            showAutocompleteOnFocus: true,
+            beautify : false
+        }).on('tokenfield:createtoken', function (event) {
+            var existingTokens = $(this).tokenfield('getTokens');
+            $.each(existingTokens, function(index, token) {
+                if (token.value === event.attrs.value) {
+                    event.preventDefault();
+                }
+            });
+        });
+
+    }
     tabForm();
     validateForm();
     textareaGrow();
     formatTime();
+    tagsInput();
 });

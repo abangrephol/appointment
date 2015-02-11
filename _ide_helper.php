@@ -1,7 +1,7 @@
 <?php
 /**
  * An helper file for Laravel 4, to provide autocomplete information to your IDE
- * Generated for Laravel 4.2.16 on 2014-12-31.
+ * Generated for Laravel 4.2.16 on 2015-02-10.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -860,6 +860,510 @@ namespace {
          */
         public static function render($statusCode = 200){
             return \Teepluss\Theme\Theme::render($statusCode);
+        }
+        
+    }
+
+
+    class Setting extends \anlutro\LaravelSettings\Facade{
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function getDefaultDriver(){
+            return \anlutro\LaravelSettings\SettingsManager::getDefaultDriver();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function createJsonDriver(){
+            return \anlutro\LaravelSettings\SettingsManager::createJsonDriver();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function createDatabaseDriver(){
+            return \anlutro\LaravelSettings\SettingsManager::createDatabaseDriver();
+        }
+        
+        /**
+         * Get a driver instance.
+         *
+         * @param string $driver
+         * @return mixed 
+         * @static 
+         */
+        public static function driver($driver = null){
+            //Method inherited from \Illuminate\Support\Manager            
+            return \anlutro\LaravelSettings\SettingsManager::driver($driver);
+        }
+        
+        /**
+         * Register a custom driver creator Closure.
+         *
+         * @param string $driver
+         * @param \Closure $callback
+         * @return $this 
+         * @static 
+         */
+        public static function extend($driver, $callback){
+            //Method inherited from \Illuminate\Support\Manager            
+            return \anlutro\LaravelSettings\SettingsManager::extend($driver, $callback);
+        }
+        
+        /**
+         * Get all of the created "drivers".
+         *
+         * @return array 
+         * @static 
+         */
+        public static function getDrivers(){
+            //Method inherited from \Illuminate\Support\Manager            
+            return \anlutro\LaravelSettings\SettingsManager::getDrivers();
+        }
+        
+    }
+
+
+    class Sentry extends \Cartalyst\Sentry\Facades\Laravel\Sentry{
+        
+        /**
+         * Registers a user by giving the required credentials
+         * and an optional flag for whether to activate the user.
+         *
+         * @param array $credentials
+         * @param bool $activate
+         * @return \Cartalyst\Sentry\Users\UserInterface 
+         * @static 
+         */
+        public static function register($credentials, $activate = false){
+            return \Cartalyst\Sentry\Sentry::register($credentials, $activate);
+        }
+        
+        /**
+         * Attempts to authenticate the given user
+         * according to the passed credentials.
+         *
+         * @param array $credentials
+         * @param bool $remember
+         * @return \Cartalyst\Sentry\Users\UserInterface 
+         * @throws \Cartalyst\Sentry\Throttling\UserBannedException
+         * @throws \Cartalyst\Sentry\Throttling\UserSuspendedException
+         * @throws \Cartalyst\Sentry\Users\LoginRequiredException
+         * @throws \Cartalyst\Sentry\Users\PasswordRequiredException
+         * @throws \Cartalyst\Sentry\Users\UserNotFoundException
+         * @static 
+         */
+        public static function authenticate($credentials, $remember = false){
+            return \Cartalyst\Sentry\Sentry::authenticate($credentials, $remember);
+        }
+        
+        /**
+         * Alias for authenticating with the remember flag checked.
+         *
+         * @param array $credentials
+         * @return \Cartalyst\Sentry\Users\UserInterface 
+         * @static 
+         */
+        public static function authenticateAndRemember($credentials){
+            return \Cartalyst\Sentry\Sentry::authenticateAndRemember($credentials);
+        }
+        
+        /**
+         * Check to see if the user is logged in and activated, and hasn't been banned or suspended.
+         *
+         * @return bool 
+         * @static 
+         */
+        public static function check(){
+            return \Cartalyst\Sentry\Sentry::check();
+        }
+        
+        /**
+         * Logs in the given user and sets properties
+         * in the session.
+         *
+         * @param \Cartalyst\Sentry\Users\UserInterface $user
+         * @param bool $remember
+         * @return void 
+         * @throws \Cartalyst\Sentry\Users\UserNotActivatedException
+         * @static 
+         */
+        public static function login($user, $remember = false){
+            \Cartalyst\Sentry\Sentry::login($user, $remember);
+        }
+        
+        /**
+         * Alias for logging in and remembering.
+         *
+         * @param \Cartalyst\Sentry\Users\UserInterface $user
+         * @static 
+         */
+        public static function loginAndRemember($user){
+            return \Cartalyst\Sentry\Sentry::loginAndRemember($user);
+        }
+        
+        /**
+         * Logs the current user out.
+         *
+         * @return void 
+         * @static 
+         */
+        public static function logout(){
+            \Cartalyst\Sentry\Sentry::logout();
+        }
+        
+        /**
+         * Sets the user to be used by Sentry.
+         *
+         * @param \Cartalyst\Sentry\Users\UserInterface
+         * @return void 
+         * @static 
+         */
+        public static function setUser($user){
+            \Cartalyst\Sentry\Sentry::setUser($user);
+        }
+        
+        /**
+         * Returns the current user being used by Sentry, if any.
+         *
+         * @return \Cartalyst\Sentry\Users\UserInterface 
+         * @static 
+         */
+        public static function getUser(){
+            return \Cartalyst\Sentry\Sentry::getUser();
+        }
+        
+        /**
+         * Sets the session driver for Sentry.
+         *
+         * @param \Cartalyst\Sentry\Sessions\SessionInterface $session
+         * @return void 
+         * @static 
+         */
+        public static function setSession($session){
+            \Cartalyst\Sentry\Sentry::setSession($session);
+        }
+        
+        /**
+         * Gets the session driver for Sentry.
+         *
+         * @return \Cartalyst\Sentry\Sessions\SessionInterface 
+         * @static 
+         */
+        public static function getSession(){
+            return \Cartalyst\Sentry\Sentry::getSession();
+        }
+        
+        /**
+         * Sets the cookie driver for Sentry.
+         *
+         * @param \Cartalyst\Sentry\Cookies\CookieInterface $cookie
+         * @return void 
+         * @static 
+         */
+        public static function setCookie($cookie){
+            \Cartalyst\Sentry\Sentry::setCookie($cookie);
+        }
+        
+        /**
+         * Gets the cookie driver for Sentry.
+         *
+         * @return \Cartalyst\Sentry\Cookies\CookieInterface 
+         * @static 
+         */
+        public static function getCookie(){
+            return \Cartalyst\Sentry\Sentry::getCookie();
+        }
+        
+        /**
+         * Sets the group provider for Sentry.
+         *
+         * @param \Cartalyst\Sentry\Groups\ProviderInterface
+         * @return void 
+         * @static 
+         */
+        public static function setGroupProvider($groupProvider){
+            \Cartalyst\Sentry\Sentry::setGroupProvider($groupProvider);
+        }
+        
+        /**
+         * Gets the group provider for Sentry.
+         *
+         * @return \Cartalyst\Sentry\Groups\ProviderInterface 
+         * @static 
+         */
+        public static function getGroupProvider(){
+            return \Cartalyst\Sentry\Sentry::getGroupProvider();
+        }
+        
+        /**
+         * Sets the user provider for Sentry.
+         *
+         * @param \Cartalyst\Sentry\Users\ProviderInterface
+         * @return void 
+         * @static 
+         */
+        public static function setUserProvider($userProvider){
+            \Cartalyst\Sentry\Sentry::setUserProvider($userProvider);
+        }
+        
+        /**
+         * Gets the user provider for Sentry.
+         *
+         * @return \Cartalyst\Sentry\Users\ProviderInterface 
+         * @static 
+         */
+        public static function getUserProvider(){
+            return \Cartalyst\Sentry\Sentry::getUserProvider();
+        }
+        
+        /**
+         * Sets the throttle provider for Sentry.
+         *
+         * @param \Cartalyst\Sentry\Throttling\ProviderInterface
+         * @return void 
+         * @static 
+         */
+        public static function setThrottleProvider($throttleProvider){
+            \Cartalyst\Sentry\Sentry::setThrottleProvider($throttleProvider);
+        }
+        
+        /**
+         * Gets the throttle provider for Sentry.
+         *
+         * @return \Cartalyst\Sentry\Throttling\ProviderInterface 
+         * @static 
+         */
+        public static function getThrottleProvider(){
+            return \Cartalyst\Sentry\Sentry::getThrottleProvider();
+        }
+        
+        /**
+         * Sets the IP address Sentry is bound to.
+         *
+         * @param string $ipAddress
+         * @return void 
+         * @static 
+         */
+        public static function setIpAddress($ipAddress){
+            \Cartalyst\Sentry\Sentry::setIpAddress($ipAddress);
+        }
+        
+        /**
+         * Gets the IP address Sentry is bound to.
+         *
+         * @return string 
+         * @static 
+         */
+        public static function getIpAddress(){
+            return \Cartalyst\Sentry\Sentry::getIpAddress();
+        }
+        
+        /**
+         * Find the group by ID.
+         *
+         * @param int $id
+         * @return \Cartalyst\Sentry\Groups\GroupInterface $group
+         * @throws \Cartalyst\Sentry\Groups\GroupNotFoundException
+         * @static 
+         */
+        public static function findGroupById($id){
+            return \Cartalyst\Sentry\Sentry::findGroupById($id);
+        }
+        
+        /**
+         * Find the group by name.
+         *
+         * @param string $name
+         * @return \Cartalyst\Sentry\Groups\GroupInterface $group
+         * @throws \Cartalyst\Sentry\Groups\GroupNotFoundException
+         * @static 
+         */
+        public static function findGroupByName($name){
+            return \Cartalyst\Sentry\Sentry::findGroupByName($name);
+        }
+        
+        /**
+         * Returns all groups.
+         *
+         * @return array $groups
+         * @static 
+         */
+        public static function findAllGroups(){
+            return \Cartalyst\Sentry\Sentry::findAllGroups();
+        }
+        
+        /**
+         * Creates a group.
+         *
+         * @param array $attributes
+         * @return \Cartalyst\Sentry\Groups\GroupInterface 
+         * @static 
+         */
+        public static function createGroup($attributes){
+            return \Cartalyst\Sentry\Sentry::createGroup($attributes);
+        }
+        
+        /**
+         * Finds a user by the given user ID.
+         *
+         * @param mixed $id
+         * @return \Cartalyst\Sentry\Users\UserInterface 
+         * @throws \Cartalyst\Sentry\Users\UserNotFoundException
+         * @static 
+         */
+        public static function findUserById($id){
+            return \Cartalyst\Sentry\Sentry::findUserById($id);
+        }
+        
+        /**
+         * Finds a user by the login value.
+         *
+         * @param string $login
+         * @return \Cartalyst\Sentry\Users\UserInterface 
+         * @throws \Cartalyst\Sentry\Users\UserNotFoundException
+         * @static 
+         */
+        public static function findUserByLogin($login){
+            return \Cartalyst\Sentry\Sentry::findUserByLogin($login);
+        }
+        
+        /**
+         * Finds a user by the given credentials.
+         *
+         * @param array $credentials
+         * @return \Cartalyst\Sentry\Users\UserInterface 
+         * @throws \Cartalyst\Sentry\Users\UserNotFoundException
+         * @static 
+         */
+        public static function findUserByCredentials($credentials){
+            return \Cartalyst\Sentry\Sentry::findUserByCredentials($credentials);
+        }
+        
+        /**
+         * Finds a user by the given activation code.
+         *
+         * @param string $code
+         * @return \Cartalyst\Sentry\Users\UserInterface 
+         * @throws \RuntimeException
+         * @throws \Cartalyst\Sentry\Users\UserNotFoundException
+         * @static 
+         */
+        public static function findUserByActivationCode($code){
+            return \Cartalyst\Sentry\Sentry::findUserByActivationCode($code);
+        }
+        
+        /**
+         * Finds a user by the given reset password code.
+         *
+         * @param string $code
+         * @return \Cartalyst\Sentry\Users\UserInterface 
+         * @throws \RuntimeException
+         * @throws \Cartalyst\Sentry\Users\UserNotFoundException
+         * @static 
+         */
+        public static function findUserByResetPasswordCode($code){
+            return \Cartalyst\Sentry\Sentry::findUserByResetPasswordCode($code);
+        }
+        
+        /**
+         * Returns an all users.
+         *
+         * @return array 
+         * @static 
+         */
+        public static function findAllUsers(){
+            return \Cartalyst\Sentry\Sentry::findAllUsers();
+        }
+        
+        /**
+         * Returns all users who belong to
+         * a group.
+         *
+         * @param \Cartalyst\Sentry\Groups\GroupInterface $group
+         * @return array 
+         * @static 
+         */
+        public static function findAllUsersInGroup($group){
+            return \Cartalyst\Sentry\Sentry::findAllUsersInGroup($group);
+        }
+        
+        /**
+         * Returns all users with access to
+         * a permission(s).
+         *
+         * @param string|array $permissions
+         * @return array 
+         * @static 
+         */
+        public static function findAllUsersWithAccess($permissions){
+            return \Cartalyst\Sentry\Sentry::findAllUsersWithAccess($permissions);
+        }
+        
+        /**
+         * Returns all users with access to
+         * any given permission(s).
+         *
+         * @param array $permissions
+         * @return array 
+         * @static 
+         */
+        public static function findAllUsersWithAnyAccess($permissions){
+            return \Cartalyst\Sentry\Sentry::findAllUsersWithAnyAccess($permissions);
+        }
+        
+        /**
+         * Creates a user.
+         *
+         * @param array $credentials
+         * @return \Cartalyst\Sentry\Users\UserInterface 
+         * @static 
+         */
+        public static function createUser($credentials){
+            return \Cartalyst\Sentry\Sentry::createUser($credentials);
+        }
+        
+        /**
+         * Returns an empty user object.
+         *
+         * @return \Cartalyst\Sentry\Users\UserInterface 
+         * @static 
+         */
+        public static function getEmptyUser(){
+            return \Cartalyst\Sentry\Sentry::getEmptyUser();
+        }
+        
+        /**
+         * Finds a throttler by the given user ID.
+         *
+         * @param mixed $id
+         * @param string $ipAddress
+         * @return \Cartalyst\Sentry\Throttling\ThrottleInterface 
+         * @static 
+         */
+        public static function findThrottlerByUserId($id, $ipAddress = null){
+            return \Cartalyst\Sentry\Sentry::findThrottlerByUserId($id, $ipAddress);
+        }
+        
+        /**
+         * Finds a throttling interface by the given user login.
+         *
+         * @param string $login
+         * @param string $ipAddress
+         * @return \Cartalyst\Sentry\Throttling\ThrottleInterface 
+         * @static 
+         */
+        public static function findThrottlerByUserLogin($login, $ipAddress = null){
+            return \Cartalyst\Sentry\Sentry::findThrottlerByUserLogin($login, $ipAddress);
         }
         
     }

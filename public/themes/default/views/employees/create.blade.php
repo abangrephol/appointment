@@ -40,7 +40,6 @@
         {{ Form::label('phone', 'Phone', array('class' => 'col-sm-3 control-label')) }}
         <div class="col-sm-3">
             {{ Form::text('phone',null, array('class'=>'form-control')) }}
-
             <label id="password_error" for="first" class="error" style="display: inline-block;"></label>
         </div>
         {{ Form::label('phone_ext', 'Ext', array('class' => 'col-sm-1 control-label')) }}
@@ -49,7 +48,13 @@
             <label id="phone_ext_error" for="first" class="error" style="display: inline-block;"></label>
         </div>
     </div>
-
+    <div class="form-group">
+        {{ Form::label('specialize', 'Specialize', array('class' => 'col-sm-3 control-label')) }}
+        <div class="col-sm-6">
+            {{ Form::text('specialize', null , array('class'=>'form-control')) }}
+            <label id="specialize_error" for="specialize" class="error" style="display: inline-block;"></label>
+        </div>
+    </div>
 </div>
 <div class="panel-footer">
     <div class="row">

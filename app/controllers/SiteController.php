@@ -25,13 +25,13 @@ class SiteController extends \BaseController {
     }
     public function login()
     {
-        if(Auth::check()){
-            return Redirect::to('/');
-        }else{
+        //if(Auth::check()){
+        //    return Redirect::to('/');
+        //}else{
             $theme = $this->theme;
             $theme->layout('auth');
             return $theme->scope('site.login')->render();
-        }
+        //}
 
     }
     public function iframe(){
@@ -51,7 +51,7 @@ class SiteController extends \BaseController {
     }
     public  function settingHour(){
         $theme = $this->theme;
-        $data = array('hour'=>Setting::get(Auth::user()->subscription_id.'.app.bussinessHour'));
+        $data = array('hour'=>Setting::get(Sentry::getUser()->subscription_id.'.app.bussinessHour'));
         return $theme->layout('tab')->scope('site.settingBusinessHour',$data)->render();
     }
 

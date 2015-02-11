@@ -41,4 +41,7 @@ class Appointment extends Ardent {
         'status'   =>  'required',
 
     );
+    public static function getForUser(){
+        return Subscription::find(Sentry::getUser()->subscription_id)->appointment()->get();
+    }
 }

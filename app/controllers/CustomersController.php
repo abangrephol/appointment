@@ -27,7 +27,7 @@ class CustomersController extends \BaseController {
                 };
                 break;
         }
-        return Datatable::collection(Subscription::find(Auth::user()->subscription_id)->customer) //array('id','first','last','email','username','is_active')
+        return Datatable::collection(Subscription::find(Sentry::getUser()->subscription_id)->customer) //array('id','first','last','email','username','is_active')
             ->showColumns($columns)
             ->addColumn('action',$button)
             ->searchColumns('first', 'last','address_1','email')
@@ -98,7 +98,7 @@ class CustomersController extends \BaseController {
                 $model->zip = $formFields['zip'];
                 $model->username = $formFields['username'];
                 $model->password = $formFields['password'];
-                $model->subscription_id = Auth::user()->subscription_id;
+                $model->subscription_id = Sentry::getUser()->subscription_id;
                 if($model->save())
                     return \Response::json(array("success"=>true,"flashMessage"=>"Create Customer Success."));
                 else

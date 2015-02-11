@@ -129,6 +129,7 @@ return array(
         'Chumper\Datatable\DatatableServiceProvider',
         'Lord\Laroute\LarouteServiceProvider',
         'anlutro\LaravelSettings\ServiceProvider',
+        'Cartalyst\Sentry\SentryServiceProvider',
 	),
 
 	/*
@@ -161,6 +162,7 @@ return array(
         'Datatable'         => 'Chumper\Datatable\Facades\DatatableFacade',
         'Theme'             => 'Teepluss\Theme\Facades\Theme',
         'Setting' => 'anlutro\LaravelSettings\Facade',
+        'Sentry' => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
         // End
 		'App'               => 'Illuminate\Support\Facades\App',
 		'Artisan'           => 'Illuminate\Support\Facades\Artisan',

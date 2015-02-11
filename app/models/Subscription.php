@@ -19,5 +19,7 @@ class Subscription extends Ardent {
         'employee'  => array(self::HAS_MANY, 'Employee'),
         'appointment'  => array(self::HAS_MANY, 'Appointment'),
         'service'  => array(self::HAS_MANY, 'Services'),
+        'customform'  => array(self::HAS_MANY, 'CustomForm'),
+        'specialize' => array(self::HAS_MANY,'Specialize')
     );
 }

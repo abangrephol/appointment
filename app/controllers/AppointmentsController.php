@@ -12,7 +12,7 @@ class AppointmentsController extends \BaseController {
     public function getDatatableAll()
     {
 
-        return Datatable::collection(Subscription::find(Auth::user()->subscription_id)->appointment()->get()) //array('id','first','last','email','username','is_active')
+        return Datatable::collection(Subscription::find(Sentry::getUser()->subscription_id)->appointment()->get()) //array('id','first','last','email','username','is_active')
             ->showColumns('confirmation_number', 'note','price_total','created_at')
             ->addColumn('status', function($model){
                 switch($model->status){
@@ -64,7 +64,7 @@ class AppointmentsController extends \BaseController {
     public function getAvailableTime($date,$data){
         $theme = $this->theme;
         $service = Services::find($data);
-        $data = array('date'=>$date,'service'=>$service,'hour'=>Setting::get(Auth::user()->subscription_id.'.app.bussinessHour'));
+        $data = array('date'=>$date,'service'=>$service,'hour'=>Setting::get(Sentry::getUser()->subscription_id.'.app.bussinessHour'));
         return $theme->widget('timeAvailability',$data)->render();
     }
 	/**
@@ -214,7 +214,7 @@ class AppointmentsController extends \BaseController {
                 $customer->address_1 = $customerData['address_1'];
                 $customer->address_2 = $customerData['address_2'];
                 $customer->zip = $customerData['zip'];
-                $customer->subscription_id = Auth::user()->subscription_id;
+                $customer->subscription_id = Sentry::getUser()->subscription_id;
                 if(!$customer->save()){
                     DB::rollBack();
                     return \Response::json(array("failed"=>true,"flashMessage"=>"Create Appointment Error.","message"=>$e->getMessage()));
@@ -233,7 +233,7 @@ class AppointmentsController extends \BaseController {
             $appointment->price_deposit = $paymentData['deposit'];
             $appointment->price_total = $paymentData['priceTotal'];
             $appointment->note = $paymentData['note'];
-            $appointment->subscription_id = Auth::user()->subscription_id;
+            $appointment->subscription_id = Sentry::getUser()->subscription_id;
 
             if(!$appointment->save()){
                 DB::rollBack();

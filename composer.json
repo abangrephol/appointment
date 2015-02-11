@@ -17,7 +17,8 @@
 		"laravelbook/ardent": "v2.4.2",
 		"chumper/datatable": "2.3",
         "lord/laroute" : "1.*",
-		"anlutro/l4-settings": "0.2.10"
+		"anlutro/l4-settings": "0.2.10",
+		"cartalyst/sentry": "v2.1.4"
 	},
 
 	"autoload": {

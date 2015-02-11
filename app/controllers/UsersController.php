@@ -14,9 +14,9 @@ class UsersController extends \BaseController {
     {
 
         return Datatable::collection(User::all()) //array('id','first','last','email','username','is_active')
-            ->showColumns('first', 'last','email','username')
+            ->showColumns('first_name', 'last_name','email','username')
             ->addColumn('active', function($model){
-                if($model->is_active)
+                if($model->activated)
                     return 'Active';
                 else
                     return 'Not Active';
@@ -24,8 +24,8 @@ class UsersController extends \BaseController {
             ->addColumn('action',function($model){
                 return Theme::widget("buttonColumn", array("model" => $model,'route'=>'user'))->render();
             })
-            ->searchColumns('first','last','email','username','active')
-            ->orderColumns('id','first','last','email','username','active')
+            ->searchColumns('first_name','last_name','email','username','active')
+            ->orderColumns('id','first_name','last_name','email','username','active')
             ->make();
     }
 	/**
@@ -80,8 +80,8 @@ class UsersController extends \BaseController {
 
             $validator = Validator::make($formFields,User::$rulesCreate);
             if($validator->passes()){
-                $user->first = $formFields['first'];//Input::get('first');
-                $user->last = $formFields['last'];//Input::get('last');
+                $user->first_name = $formFields['first_name'];//Input::get('first');
+                $user->last_name = $formFields['last_name'];//Input::get('last');
                 $user->email = $formFields['email'];//Input::get('email'); ;
                 $user->username = $formFields['username'];//Input::get('username');
                 $user->password = $formFields['password'];
@@ -143,22 +143,25 @@ class UsersController extends \BaseController {
 
             $inputData = Input::get('formData');
             parse_str($inputData, $formFields);
-            $user = User::find($id);
+            $user = Sentry::findUserById($id);
 
 
             $validator = Validator::make($formFields,User::$rulesUpdate);
             if($validator->passes()){
-                $user->first = $formFields['first'];//Input::get('first');
-                $user->last = $formFields['last'];//Input::get('last');
+                $user->first_name = $formFields['first_name'];//Input::get('first');
+                $user->last_name = $formFields['last_name'];//Input::get('last');
                 $user->email = $formFields['email'];//Input::get('email'); ;
                 $user->username = $formFields['username'];//Input::get('username');
-                $user->subscription_id = Auth::user()->subscription_id;
-                if(isset($formFields['is_active']))
-                    $user->is_active = $formFields['is_active'];
+                $user->subscription_id = Sentry::getUser()->subscription_id;
+                if(isset($formFields['activated']))
+                    $user->activated = $formFields['activated'];
                 else
-                    $user->is_active = 0;
-                if(isset($formFields['old_password']) && isset($formFields['password']))
+                    $user->activated = 0;
+                if(strlen($formFields['old_password'])>0 && strlen($formFields['password'])>0){
                     $user->password = $formFields['password'];
+                    dd('oke');
+                }
+
 
                 if($user->save())
                     return \Response::json(array("success"=>true,"flashMessage"=>"Update Success."));
