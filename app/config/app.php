@@ -130,6 +130,7 @@ return array(
         'Lord\Laroute\LarouteServiceProvider',
         'anlutro\LaravelSettings\ServiceProvider',
         'Cartalyst\Sentry\SentryServiceProvider',
+        'Barryvdh\Cors\CorsServiceProvider',
 	),
 
 	/*
@@ -163,6 +164,7 @@ return array(
         'Theme'             => 'Teepluss\Theme\Facades\Theme',
         'Setting' => 'anlutro\LaravelSettings\Facade',
         'Sentry' => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
+
         // End
 		'App'               => 'Illuminate\Support\Facades\App',
 		'Artisan'           => 'Illuminate\Support\Facades\Artisan',

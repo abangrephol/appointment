@@ -18,7 +18,8 @@
 		"chumper/datatable": "2.3",
         "lord/laroute" : "1.*",
 		"anlutro/l4-settings": "0.2.10",
-		"cartalyst/sentry": "v2.1.4"
+		"cartalyst/sentry": "v2.1.4",
+		"barryvdh/laravel-cors": "0.2.x"
 	},
 
 	"autoload": {
