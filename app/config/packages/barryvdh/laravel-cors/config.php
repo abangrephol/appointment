@@ -41,14 +41,22 @@ return array(
             'hosts' => array('api.*'),
         ),
     ),*/
-    'defaults' => array(
-        'supportsCredentials' => true,
-        'allowedOrigins' => array('http://www.coldengineaircon.com.sg,http://personalfitnesscoach.sg'),
-        'allowedHeaders' => array('*'),
-        'allowedMethods' => array('*'),
-        'maxAge' => 3600,
-        'hosts' => array()
+    'defaults' =>  array(
+        'allow_credentials' => false,
+        'allow_origin'=> array('*'),
+        'allow_headers'=> array('*'),
+        'allow_methods'=> array('*'),
+        'expose_headers'=> array(),
+        'max_age' => 0
     ),
-    'paths' => array(),
+
+    'paths' => array(
+        '^/api/*' => array(
+            'allow_origin'=> array('*'),
+            'allow_headers'=> array('*'),
+            'allow_methods'=> array('POST', 'PUT', 'GET', 'DELETE','OPTIONS'),
+            'max_age' => 3600
+        )
+    ),
 
 );
