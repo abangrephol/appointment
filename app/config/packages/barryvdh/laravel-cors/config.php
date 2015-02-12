@@ -30,7 +30,7 @@ return array(
             'allowedOrigins' => array('*'),
             'allowedHeaders' => array('*'),
             'allowedMethods' => array('*'),
-            'maxAge' => 3600,
+            'maxAge' => 0,
         ),
         '*' => array(
             'allowedOrigins' => array('*'),
