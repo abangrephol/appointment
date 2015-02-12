@@ -43,7 +43,7 @@ return array(
     ),*/
     'defaults' => array(
         'supportsCredentials' => false,
-        'allowedOrigins' => array('*'),
+        'allowedOrigins' => array('http://www.coldengineaircon.com.sg,http://personalfitnesscoach.sg'),
         'allowedHeaders' => array('*'),
         'allowedMethods' => array('*'),
         'maxAge' => 3600,
