@@ -130,7 +130,7 @@ return array(
         'Lord\Laroute\LarouteServiceProvider',
         'anlutro\LaravelSettings\ServiceProvider',
         'Cartalyst\Sentry\SentryServiceProvider',
-        //'Barryvdh\Cors\CorsServiceProvider',
+        'Barryvdh\Cors\CorsServiceProvider',
 	),
 
 	/*
