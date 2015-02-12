@@ -16,7 +16,7 @@ return array(
      |
      */
     'defaults' => array(
-        'supportsCredentials' => false,
+        'supportsCredentials' => true,
         'allowedOrigins' => array(),
         'allowedHeaders' => array(),
         'allowedMethods' => array(),
@@ -30,6 +30,7 @@ return array(
             'allowedOrigins' => array('*'),
             'allowedHeaders' => array('*'),
             'allowedMethods' => array('*'),
+            'supportsCredentials' => true,
             'maxAge' => 0,
         ),
         '*' => array(
