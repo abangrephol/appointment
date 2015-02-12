@@ -13,18 +13,18 @@ class CustomFormsController extends \BaseController {
     {
 
         return Datatable::collection(Subscription::find(Sentry::getUser()->subscription_id)->customform) //array('id','first','last','email','username','is_active')
-            ->showColumns('first', 'last','email')
-            ->addColumn('active', function($model){
+            ->showColumns('name', 'description')
+            /*->addColumn('active', function($model){
                 if($model->is_active)
                     return 'Active';
                 else
                     return 'Not Active';
-            })
+            })*/
             ->addColumn('action',function($model){
                 return Theme::widget("buttonColumn", array("model" => $model,'route'=>'customform'))->render();
             })
-            ->searchColumns('first','last','email','active')
-            ->orderColumns('id','first','last','email','active')
+            ->searchColumns('name','description')
+            ->orderColumns('name')
             ->make();
     }
     /**
@@ -39,7 +39,7 @@ class CustomFormsController extends \BaseController {
         $theme->set('title','Custom Forms');
         $theme->set('route','customform');
         $routeUrl = 'dt.customforms';
-        $columns = array('First Name','Last Name', 'Email' ,'Status','Action');
+        $columns = array('Form Name','Description','Action');
 
         $data = array("usersColumn" => $columns,'routeUrl'=>$routeUrl);
 

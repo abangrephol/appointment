@@ -1,4 +1,4 @@
-<div class="pageheader">
+<!--div class="pageheader">
     <h2><i class="fa fa-calendar"></i> Appointments <span></span></h2>
     <div class="breadcrumb-wrapper">
         <span class="label">Logged as </span>
@@ -7,4 +7,4 @@
             <li><a href="/logout">Logout</a></li>
         </ol>
     </div>
-</div>
+</div-->
