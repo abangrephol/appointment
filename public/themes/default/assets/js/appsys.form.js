@@ -150,6 +150,77 @@ $(document).ready(function(){
         });
 
     }
+    function editField(){
+        $.each($('.del-field'),function(index,el){
+            $(el).on('click',function(e){
+                $(this).closest('.form-group').remove();
+            });
+        })
+        $.each($('.edit-field'),function(index,el){
+            $(el).on('click',function(e){
+                if($('#panel-add').length!=0){
+                    $('#panel-add').remove();
+                }
+                $(this).closest('.panel-body').append($('#fieldtpl').html());
+                formAdd(this);
+                $('#panel-add #new-field').val($(this).data('field-name'));
+                $('#panel-add #new-field-type').val($(this).data('field-type'));
+                $('#panel-add #new-field-req').val($(this).data('field-req'));
+            });
+        })
+
+    }
+    editField();
+    function formAdd(el){
+
+        $('#panel-add .cancel').on('click',function(){
+            $('#panel-add').remove();
+        })
+        $('#panel-add .add').on('click',function(){
+            //customField.push({ name:$('#panel-add').find('#new-field').val(), type:$('#panel-add').find('#new-field-type').val() });
+            var row = $('#fieldtpl-row').html();
+            row = row.replace(/\{name}/g,$('#panel-add').find('#new-field').val())
+                .replace(/\{type}/g,$('#panel-add').find('#new-field-type option:selected').text())
+                .replace(/\{req}/g,$('#panel-add').find('#new-field-req option:selected').val()=='1'?'required':'optional')
+                .replace(/\{val-type}/g,$('#panel-add').find('#new-field-type').val())
+                .replace(/\{val-req}/g,$('#panel-add').find('#new-field-req').val());
+            if($(el).attr('id')!=$('#addfield').attr('id'))
+            {
+                $(row).insertBefore($(el).closest('.form-group'));
+                $(el).closest('.form-group').remove();
+            }
+            else
+                $(this).closest('.panel-body').append(row);
+
+            $('.del-field').on('click',function(e){
+                $(this).closest('.form-group').remove();
+            });
+            $('.edit-field').on('click',function(e){
+                if($('#panel-add').length!=0){
+                    $('#panel-add').remove();
+                }
+                $(this).closest('.panel-body').append($('#fieldtpl').html());
+                formAdd(this);
+                $('#panel-add #new-field').val($(this).data('field-name'));
+                $('#panel-add #new-field-type').val($(this).data('field-type'));
+                $('#panel-add #new-field-req').val($(this).data('field-req'));
+
+            });
+            $('#panel-add').remove();
+        })
+    }
+    function addField(){
+
+        $('#addfield').on('click',function(){
+            if($('#panel-add').length==0){
+                $(this).closest('.panel-body').append($('#fieldtpl').html());
+                formAdd(this);
+            }
+
+
+        })
+    }
+    addField();
     tabForm();
     validateForm();
     textareaGrow();

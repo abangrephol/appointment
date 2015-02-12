@@ -73,19 +73,38 @@ class CustomFormsController extends \BaseController {
         try{
 
             $inputData = Input::get('formData');
-            parse_str($inputData, $formFields);
-            $model = new CustomForm();
 
+            parse_str($inputData, $formFields);
+
+            $model = new CustomForm();
 
             $validator = Validator::make($formFields,CustomForm::$rulesCreate);
             if($validator->passes()){
                 $model->name = $formFields['name'];
                 $model->description = $formFields['description'];
                 $model->subscription_id = Sentry::getUser()->subscription_id;
-                if($model->save())
-                    return \Response::json(array("success"=>true,"flashMessage"=>"Create Custom Form Success."));
+                if(isset($formFields['customfieldname']))
+                    return \Response::json(array("failed"=>true,"flashMessage"=>"Create Custom Form Failed. At least 1 form field.","message"=>$model->validationErrors));
                 else
-                    return \Response::json(array("failed"=>true,"flashMessage"=>"Create Custom Form Failed.","message"=>$model->validationErrors));
+                {
+
+                    if($model->save()){
+                        $customFormId = $model->id;
+                        for($i=0; $i<count($formFields['customfieldname']);$i++){
+                            $field = new CustomFormField();
+                            $field->name = $formFields['customfieldname'][$i];
+                            $field->type = $formFields['customfieldtype'][$i];
+                            $field->requirement = $formFields['customfieldreq'][$i];
+                            $field->custom_form_id = $customFormId;
+
+                            $field->save();
+                        }
+                        return \Response::json(array("success"=>true,"flashMessage"=>"Create Custom Form Success."));
+                    }
+                    else
+                        return \Response::json(array("failed"=>true,"flashMessage"=>"Create Custom Form Failed.","message"=>$model->validationErrors));
+                }
+
             }else{
                 return \Response::json(array("failed"=>true,"flashMessage"=>"Create Custom Form Failed.","message"=>$validator->getMessageBag()->toArray()));
             }
@@ -117,11 +136,11 @@ class CustomFormsController extends \BaseController {
     {
         $theme = $this->theme;
         //$theme->layout('form');
-        $theme->set('title','Edit Employee');
-        $model = Employee::find($id);
-        $data = array("data"=>$model);
+        $theme->set('title','Edit Custom Form');
+        $model = CustomForm::find($id);
+        $data = array("data"=>$model,'fields'=>array('textfield'=>'Text Field','text'=>'Text','checkbox'=>'Checkbox','yesno'=>'Yes/No'));
 
-        return $theme->layout('form')->scope('employees.edit',$data)->render();
+        return $theme->layout('form')->scope('custom_forms.edit',$data)->render();
     }
 
     /**
@@ -136,41 +155,44 @@ class CustomFormsController extends \BaseController {
         try{
 
             $inputData = Input::get('formData');
+
             parse_str($inputData, $formFields);
-            $model = Employee::find($id);
-            $specializes = explode(',',$formFields['specialize']);
-            foreach($specializes as $special){
-                if(Specialize::where('specialize',$special)->get()->count()==0){
-                    $newSpecialize = new Specialize();
-                    $newSpecialize->subscription_id = Sentry::getUser()->subscription_id;
-                    $newSpecialize->specialize = $special;
-                    $newSpecialize->save();
-                }
-            }
-            $validator = Validator::make($formFields,Employee::$rulesUpdate);
+
+            $model = CustomForm::find($id);
+
+            $validator = Validator::make($formFields,CustomForm::$rulesCreate);
             if($validator->passes()){
-                $model->first = $formFields['first'];//Input::get('first');
-                $model->last = $formFields['last'];//Input::get('last');
-                $model->email = $formFields['email'];//Input::get('email'); ;
-                $model->title = $formFields['title'];//Input::get('username');
-                $model->phone = $formFields['phone'];
-                $model->phone_ext = $formFields['phone_ext'];
-                $model->specialize = $formFields['specialize'];
-
-                if(isset($formFields['is_active']))
-                    $model->is_active = $formFields['is_active'];
+                $model->name = $formFields['name'];
+                $model->description = $formFields['description'];
+                $model->subscription_id = Sentry::getUser()->subscription_id;
+                if(!isset($formFields['customfieldname']))
+                    return \Response::json(array("failed"=>true,"flashMessage"=>"Update Custom Form Failed. At least 1 form field.","message"=>$model->validationErrors));
                 else
-                    $model->is_active = 0;
+                {
 
-                if($model->save())
-                    return \Response::json(array("success"=>true,"flashMessage"=>"Update Success."));
-                else
-                    return \Response::json(array("failed"=>true,"flashMessage"=>"Update Failed.","message"=>$model->validationErrors));
+                    if($model->save()){
+                        $customFormId = $id;
+                        $model->customformfield()->delete();
+                        for($i=0; $i<count($formFields['customfieldname']);$i++){
+                            $field = new CustomFormField();
+                            $field->name = $formFields['customfieldname'][$i];
+                            $field->type = $formFields['customfieldtype'][$i];
+                            $field->requirement = $formFields['customfieldreq'][$i];
+                            $field->custom_form_id = $customFormId;
+
+                            $field->save();
+                        }
+                        return \Response::json(array("success"=>true,"flashMessage"=>"Update Custom Form Success."));
+                    }
+                    else
+                        return \Response::json(array("failed"=>true,"flashMessage"=>"Update Custom Form Failed.","message"=>$model->validationErrors));
+                }
+
             }else{
-                return \Response::json(array("failed"=>true,"flashMessage"=>"Update Failed.","message"=>$validator->getMessageBag()->toArray()));
+                return \Response::json(array("failed"=>true,"flashMessage"=>"Update Custom Form Failed.","message"=>$validator->getMessageBag()->toArray()));
             }
         }catch (\Exception $e){
-            return \Response::json(array("failed"=>true,"flashMessage"=>"Update Failed.","message"=>$e->getMessage()));
+            return \Response::json(array("failed"=>true,"flashMessage"=>"Update Custom Form Failed.","message"=>$e->getMessage()));
         }
     }
     public  function delete($id){
