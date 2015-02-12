@@ -51,11 +51,11 @@ return array(
     ),
 
     'paths' => array(
-        '^/api/*' => array(
+        '^/' => array(
             'allow_origin'=> array('*'),
             'allow_headers'=> array('*'),
             'allow_methods'=> array('POST', 'PUT', 'GET', 'DELETE','OPTIONS'),
-            'max_age' => 3600
+            'max_age' => 0
         )
     ),
 
