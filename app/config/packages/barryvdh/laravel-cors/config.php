@@ -15,7 +15,7 @@ return array(
      | to accept any value, the allowed methods however have to be explicitly listed.
      |
      */
-    'defaults' => array(
+    /*'defaults' => array(
         'supportsCredentials' => true,
         'allowedOrigins' => array(),
         'allowedHeaders' => array(),
@@ -40,6 +40,15 @@ return array(
             'maxAge' => 3600,
             'hosts' => array('api.*'),
         ),
+    ),*/
+    'defaults' => array(
+        'supportsCredentials' => false,
+        'allowedOrigins' => array('*'),
+        'allowedHeaders' => array('*'),
+        'allowedMethods' => array('*'),
+        'maxAge' => 3600,
+        'hosts' => array()
     ),
+    'paths' => array(),
 
 );
