@@ -42,7 +42,7 @@ return array(
         ),
     ),*/
     'defaults' => array(
-        'supportsCredentials' => false,
+        'supportsCredentials' => true,
         'allowedOrigins' => array('http://www.coldengineaircon.com.sg,http://personalfitnesscoach.sg'),
         'allowedHeaders' => array('*'),
         'allowedMethods' => array('*'),
