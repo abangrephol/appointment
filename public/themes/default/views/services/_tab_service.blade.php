@@ -58,6 +58,31 @@
         <label id="capacity_error" for="capacity" class="error" style="display: inline-block;"></label>
     </div>
 </div>
+@if ($customfields->count()>0)
+<div class="form-group">
+    {{ Form::label('custom_forms[]', 'Custom Forms', array('class' => 'col-sm-3 control-label')) }}
+    <div class="col-sm-2">
+        <div class="input-group">
+            @foreach($customfields as $fields)
+            <div class="checkbox block">
+                <label>
+                    {{ ''; $selected=false; }}
+                    @foreach ($datacustomfields as $datafield)
+                        @if($datafield->custom_form_id == $fields->id)
+                            {{ ''; $selected=true; }}
+                        @endif
+                    @endforeach
+
+                    {{ Form::checkbox('custom_forms[]', $fields->id,$selected) }}
+                    {{ $fields->name }}
+                </label>
+            </div>
+            @endforeach
+        </div>
+        <label id="capacity_error" for="capacity" class="error" style="display: inline-block;"></label>
+    </div>
+</div>
+@endif
 <div class="form-group">
     <div class="col-sm-3"></div>
     <div class="col-sm-9">

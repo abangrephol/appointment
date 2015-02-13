@@ -83,7 +83,7 @@ class CustomFormsController extends \BaseController {
                 $model->name = $formFields['name'];
                 $model->description = $formFields['description'];
                 $model->subscription_id = Sentry::getUser()->subscription_id;
-                if(isset($formFields['customfieldname']))
+                if(!isset($formFields['customfieldname']))
                     return \Response::json(array("failed"=>true,"flashMessage"=>"Create Custom Form Failed. At least 1 form field.","message"=>$model->validationErrors));
                 else
                 {

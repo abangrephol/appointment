@@ -14,7 +14,9 @@ class Services extends Ardent {
 
     protected $fillable = [];
     public static $relationsData = array(
-        'subscription' => array(self::BELONGS_TO, 'Subscription')
+        'subscription' => array(self::BELONGS_TO, 'Subscription'),
+        'customforms' => array(self::HAS_MANY,'ServiceCustomForm'),
+        'customform' => array(self::BELONGS_TO_MANY,'CustomForm','table'=>'services_custom_forms')
     );
     public static $rulesCreate = array(
         'name'                 => 'required|between:5,50',

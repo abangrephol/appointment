@@ -17,7 +17,7 @@
     <div class="form-group">
         {{ Form::label('description', 'Description', array('class' => 'col-sm-3 control-label')) }}
         <div class="col-sm-6">
-            {{ Form::textarea('description', null , array('class'=>'form-control ta-grow','required','placeholder' => 'Enter Description','title'=>'Please type at least 6 characters long!')) }}
+            {{ Form::textarea('description', null , array('class'=>'form-control ta-grow','required','placeholder' => 'Enter Description','title'=>'Please type at least 6 characters long!','rows'=>4)) }}
             <label id="description_error" for="description" class="error" style="display: inline-block;"></label>
         </div>
     </div>
@@ -62,6 +62,24 @@
             <label id="capacity_error" for="capacity" class="error" style="display: inline-block;"></label>
         </div>
     </div>
+    @if ($customfields->count()>0)
+    <div class="form-group">
+        {{ Form::label('custom_forms[]', 'Custom Forms', array('class' => 'col-sm-3 control-label')) }}
+        <div class="col-sm-2">
+            <div class="input-group">
+                @foreach($customfields as $fields)
+                <div class="checkbox block">
+                    <label>
+                        {{ Form::checkbox('custom_forms[]', $fields->id) }}
+                        {{ $fields->name }}
+                    </label>
+                </div>
+                @endforeach
+            </div>
+            <label id="capacity_error" for="capacity" class="error" style="display: inline-block;"></label>
+        </div>
+    </div>
+    @endif
 </div>
 <div class="panel-footer">
     <div class="row">

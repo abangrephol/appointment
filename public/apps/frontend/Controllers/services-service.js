@@ -21,6 +21,16 @@ angular.module('appSys.services.service', [
     .factory('availableTime',['$http',function($http){
         var path = config.apiPath+''
     }])
+    .factory('serviceCustomForm',['$http','$q',function($http,$q){
+        return {
+            getFields: function(id){
+                //var deferred = $q.defer();
+                return $http.get(config.apiPath+'services/customform/'+id+'?apikey='+api_key)
+
+                //return deferred.promise;
+            }
+        }
+    }])
     .factory('serviceRes',['$http',function($http){
         return {
                 save: function(data,customer,payment){

@@ -6,8 +6,8 @@
     <div class="basic-wizard">
         <ul class="nav nav-pills nav-justified">
             <li class="active"><a href="#service" data-toggle="tab" data-url="{{ route('tab.service',array( 'service' , $data->id)) }}"><span>Service Info</span></a></li>
-            <li class=""><a href="#bussiness-hour" data-toggle="tab" data-url="{{ route('tab.service',array( 'hour' , $data->id)) }}">Bussiness Hour</a></li>
-            <li class=""><a href="#availability" data-toggle="tab" data-url="{{ route('tab.service',array( 'service' , $data->id)) }}">Availability</a></li>
+            <!--li class=""><a href="#bussiness-hour" data-toggle="tab" data-url="{{ route('tab.service',array( 'hour' , $data->id)) }}">Bussiness Hour</a></li>
+            <li class=""><a href="#availability" data-toggle="tab" data-url="{{ route('tab.service',array( 'service' , $data->id)) }}">Availability</a></li-->
         </ul>
     </div>
     <div class="tab-content">

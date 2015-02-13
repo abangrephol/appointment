@@ -31,7 +31,17 @@ class ServicesController extends \BaseController {
     public  function  tab($tabId,$id){
         $theme = $this->theme;
         $model = Services::find($id);
-        $data = array("data"=>$model);
+        if($tabId!='service')
+        {
+            $data = array("data"=>$model);
+        }else{
+            $data = array(
+                "data"=>$model,
+                'customfields'=>Subscription::find(Sentry::getUser()->subscription_id)->customform,
+                'datacustomfields' => $model->customform
+            );
+
+        }
         return $theme->layout('tab')->scope('services._tab_'.$tabId,$data)->render();
     }
 	/**
@@ -64,8 +74,8 @@ class ServicesController extends \BaseController {
 	{
         $theme = $this->theme;
         $theme->set('title','New Service');
-
-        return $theme->layout('form')->scope('services.create')->render();
+        $data = array('customfields'=>Subscription::find(Sentry::getUser()->subscription_id)->customform);
+        return $theme->layout('form')->scope('services.create',$data)->render();
 	}
 
 	/**
@@ -92,8 +102,18 @@ class ServicesController extends \BaseController {
                 $model->interval = $formFields['interval'];
                 $model->capacity = $formFields['capacity'];
                 $model->subscription_id = $model->subscription_id = Sentry::getUser()->subscription_id;
-                if($model->save())
+                if($model->save()){
+                    if(isset($formFields['custom_forms'])){
+                        for($i=0;$i<count($formFields['custom_forms']);$i++){
+                            $customForm = new ServiceCustomForm();
+                            $customForm->services_id = $model->id;
+                            $customForm->custom_form_id = $formFields['custom_forms'][$i];
+                            $customForm->save();
+                        }
+                    }
+
                     return \Response::json(array("success"=>true,"flashMessage"=>"Create Service Success."));
+                }
                 else
                     return \Response::json(array("failed"=>true,"flashMessage"=>"Create Service Failed.","message"=>$model->validationErrors));
             }else{
@@ -129,7 +149,9 @@ class ServicesController extends \BaseController {
         //$theme->layout('form');
         $theme->set('title','Edit Service');
         $model = Services::find($id);
-        $data = array("data"=>$model);
+        $data = array(
+            "data"=>$model
+        );
 
         return $theme->layout('form')->scope('services.edit',$data)->render();
 	}
@@ -159,8 +181,19 @@ class ServicesController extends \BaseController {
                 $model->interval = $formFields['interval'];
                 $model->capacity = $formFields['capacity'];
 
-                if($model->save())
+                if($model->save()){
+                    if(isset($formFields['custom_forms'])){
+                        $model->customforms()->delete();
+                        for($i=0;$i<count($formFields['custom_forms']);$i++){
+                            $customForm = new ServiceCustomForm();
+                            $customForm->services_id = $model->id;
+                            $customForm->custom_form_id = $formFields['custom_forms'][$i];
+                            $customForm->save();
+                        }
+                    }
                     return \Response::json(array("success"=>true,"flashMessage"=>"Update Success."));
+                }
+
                 else
                     return \Response::json(array("failed"=>true,"flashMessage"=>"Update Failed.","message"=>$model->validationErrors));
             }else{

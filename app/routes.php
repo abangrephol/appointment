@@ -28,6 +28,28 @@ Route::api(['version'   =>  'v1' , 'prefix' => 'api','before'=>'apikey'],functio
             return Subscription::find(Session::get('sid'))->first()->service->toJson();
         });
         Route::post('checkout','AppointmentsController@storeAPI');
+        Route::get('customform/{id}',function($id){
+            $fields = array();
+            foreach(Services::find($id)->customform as $form){
+
+                $tmpFields = array();
+                foreach($form->customformfield as $field){
+                    $tmpFields[] = array(
+                        'id'=>$field->id,
+                        'name'=>$field->name,
+                        'type'=>$field->type,
+                        'req'=>$field->requirement
+                    );
+                }
+                $fields[] = array(
+                    'id'=>$form->id,
+                    'name'=>$form->name,
+                    'description' => $form->id,
+                    'fields'=>$tmpFields
+                );
+            }
+            return$fields;
+        });
         //return API::response()->array(Input::json('services'))->statusCode(200);
     });
     Route::group(array('prefix'=>'angview'),function(){
@@ -37,6 +59,7 @@ Route::api(['version'   =>  'v1' , 'prefix' => 'api','before'=>'apikey'],functio
         Route::get('timeAvailable','AngularController@timeAvailable');
         Route::get('cart','AngularController@cart');
         Route::get('checkout','AngularController@checkout');
+        Route::get('makeAppointment','AngularController@makeAppointment');
     });
     Route::get('/','SiteController@iframe');
 });

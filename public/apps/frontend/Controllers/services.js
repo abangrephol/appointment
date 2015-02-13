@@ -131,12 +131,19 @@ $service = angular.module('appSys.services', [
                 url : '/{time}',
                 views : {
                     "make" : {
-                        template: "<div ng-show='cartAdded' class='mb20 text-success'>Successfull make an appointment. View <b><a ui-sref='service.cart'>Cart</a></b> to checkout.</div>"
-                            +"<div class='row col-sm-12 mb20'><span class='well well-sm mr5 mb5'>Start time : {{ startTime }}</span>"
-                            +"<span class='well well-sm mr5 mb5'>End time : {{ endTime }}</span></div>"
-                            +"<div class='row col-sm-12'><a class='btn btn-sm' ng-click='makeAppointment()'>Make Appointment</a></div>",
-                        controller: ['$scope','$stateParams','utils',
-                            function($scope,$stateParams,utils){
+                        resolve:{
+                            serviceCustomForm: function(serviceCustomForm){
+                                return serviceCustomForm
+                            }
+                        },
+                        templateUrl: config.server+'/api/angview/makeAppointment?apikey='+api_key,
+
+                        controller: ['$scope','$stateParams','utils','serviceCustomForm',
+                            function($scope,$stateParams,utils,serviceCustomForm){
+                                var getCustomForm = serviceCustomForm.getFields($scope.service.id);
+                                getCustomForm.then(function(resp){
+                                    $scope.forms = resp.data;
+                                });
                                 $scope.cartAdded = false;
                                 $scope.cartAdd= function(state){
                                     $scope.cartAdded = state;

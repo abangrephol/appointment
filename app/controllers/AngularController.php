@@ -34,4 +34,8 @@ class AngularController extends \BaseController {
         $theme = $this->theme;
         return $theme->scope('frontend.checkout')->render();
     }
+    public  function makeAppointment(){
+        $theme = $this->theme;
+        return $theme->scope('frontend.makeAppointment')->render();
+    }
 }
