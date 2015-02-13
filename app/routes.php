@@ -70,16 +70,21 @@ Route::get('mail',function(){
 });
 Route::get('login', array('as'=>'login','uses'=>"SiteController@login") );
 Route::get('loginAPI',array(function(){
-    if(Sentry::check())
-        return Redirect::to('/');
+    //if(Sentry::check())
+        //return Redirect::to('/');
     $subscription = ApiKey::check(Input::get('apikey'));
+    //dd(Sentry::getUser());
     if($subscription->count()>0){
         $subscription_id = $subscription->first()->subscription_id;
+
         $user = Sentry::getUserProvider()->createModel()->where('subscription_id',$subscription_id)->get();
 
         if($user->count()>0){
 
             $user = Sentry::findUserById($user->first()->id);
+            if(Sentry::check())
+                if(Sentry::getUser()->id==$user->id)
+                    return Redirect::to('/');
             Sentry::login($user,true);
             if (Sentry::check()) {
                 return Redirect::to('/')
