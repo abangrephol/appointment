@@ -1,6 +1,7 @@
 <div class="row">
     <div class="col-xs-12">
         <a ui-sref="service.cart" class="btn btn-black btn-sm mb20"><i class="fa fa-shopping-cart mr5"></i>&nbsp;Confirmation</a>
+        <a ui-sref="service.login" class="btn btn-black btn-sm mb20"><i class="fa fa-calendar-o mr5"></i>&nbsp;My Calendar</a>
     </div>
 </div>
 <div class="row">

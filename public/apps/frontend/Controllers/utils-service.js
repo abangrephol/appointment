@@ -10,6 +10,12 @@ angular.module('appSys.utils.service', [
                     if (a[i].id == id) return a[i];
                 }
                 return null;
+            },
+            findByDate: function findByDate(a,id){
+                for (var i = 0; i < a.length; i++) {
+                    if (a[i].date == id) return a[i];
+                }
+                return null;
             }
 
         };

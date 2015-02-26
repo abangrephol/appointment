@@ -96,9 +96,9 @@ var config = {
                                 config.server+"/themes/default/assets/js/moment.min.js",
                                 function(){
                                     loadScript(
-                                        /*config.server+"/themes/default/assets/js/fullcalendar.min.js",
+                                        config.server+"/themes/default/assets/js/angular/angular-cookies.min.js",
                                         function(){
-                                            loadScript(*/
+                                            loadScript(
                                                 config.server+"/themes/default/assets/js/angular/angular-ui-router.min.js",
                                                 function(){
                                                     loadScript(
@@ -153,8 +153,8 @@ var config = {
                                                         }
                                                     )
                                                 }
-                                            //)
-                                        //}
+                                            )
+                                        }
                                     )
                                 }
                             )

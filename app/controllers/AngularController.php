@@ -38,4 +38,12 @@ class AngularController extends \BaseController {
         $theme = $this->theme;
         return $theme->scope('frontend.makeAppointment')->render();
     }
+    public  function login(){
+        $theme = $this->theme;
+        return $theme->scope('frontend.login')->render();
+    }
+    public  function calendar(){
+        $theme = $this->theme;
+        return $theme->scope('frontend.calendar')->render();
+    }
 }

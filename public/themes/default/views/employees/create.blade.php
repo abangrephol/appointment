@@ -48,11 +48,35 @@
             <label id="phone_ext_error" for="first" class="error" style="display: inline-block;"></label>
         </div>
     </div>
-    <div class="form-group">
+    <div class="form-group mb20">
         {{ Form::label('specialize', 'Specialize', array('class' => 'col-sm-3 control-label')) }}
         <div class="col-sm-6">
             {{ Form::text('specialize', null , array('class'=>'form-control')) }}
             <label id="specialize_error" for="specialize" class="error" style="display: inline-block;"></label>
+        </div>
+    </div>
+    <div class="form-group">
+        &nbsp;
+    </div>
+    <div class="form-group">
+        {{ Form::label('username', 'Username', array('class' => 'col-sm-3 control-label')) }}
+        <div class="col-sm-6">
+            {{ Form::text('username', null , array('class'=>'form-control')) }}
+            <label id="username_error" for="username" class="error" style="display: inline-block;"></label>
+        </div>
+    </div>
+    <div class="form-group">
+        {{ Form::label('password', 'Password', array('class' => 'col-sm-3 control-label')) }}
+        <div class="col-sm-6">
+            {{ Form::password('password', array('class'=>'form-control')) }}
+            <label id="password_error" for="password" class="error" style="display: inline-block;"></label>
+        </div>
+    </div>
+    <div class="form-group">
+        {{ Form::label('password_confirmation', 'Confirm Password', array('class' => 'col-sm-3 control-label')) }}
+        <div class="col-sm-6">
+            {{ Form::password('password_confirmation',  array('class'=>'form-control')) }}
+            <label id="password_confirmation_error" for="password_confirmation" class="error" style="display: inline-block;"></label>
         </div>
     </div>
 </div>

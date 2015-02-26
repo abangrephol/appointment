@@ -29,14 +29,14 @@ $service = angular.module('appSys.services', [
                         }
                     ]
                 },
-                controller: ['$scope', '$state', 'services', 'utils','$localStorage','settingCur',
-                    function (  $scope,   $state,   services , utils, $localStorage,settingCur) {
+                controller: ['$scope', '$state', 'services', 'utils','$localStorage','settingCur','$rootScope',
+                    function (  $scope,   $state,   services , utils, $localStorage,settingCur,$rootScope) {
                         $scope.apikey = api_key;
                         $scope.services = services;
                         $scope.currency = settingCur;
                         $state.transitionTo('service.list');
                         $scope.$storage = $localStorage.$default({cart:[]});
-
+                        $rootScope.logged = false;
                     }]
 
             })
@@ -222,7 +222,7 @@ $service = angular.module('appSys.services', [
                                             $scope.$state.transitionTo('service.checkout');
                                         })
                                         .error(function(data){
-                                            console.log('ohno');
+                                            console.log('Error');
                                         })
                                 }
                             }
@@ -238,6 +238,74 @@ $service = angular.module('appSys.services', [
                         controller: ['$scope','$stateParams','$localStorage',
                             function($scope,$stateParams,$localStorage){
                                 $localStorage.$reset({cart:[]});
+                            }
+                        ]
+                    }
+                }
+            })
+
+            .state('service.calendar',{
+                url: 'calendar',
+                views: {
+                    'list' : {
+                        resolve:{
+                            servicesScheduled: ['servicesScheduled',
+                                function( servicesScheduled){
+                                    return servicesScheduled.all();
+                                }
+                            ]
+                        },
+                        templateUrl: config.server+'/api/angview/calendar?apikey='+api_key,
+                        controller: ['$scope','$state','$stateParams','servicesScheduled','$rootScope',
+                            function($scope,$state,$stateParams,servicesScheduled,$rootScope){
+                                if($rootScope.logged){
+                                    $scope.dt = new Date();
+                                    servicesScheduled.forEach(function(item){
+                                        item.datetime = moment(item.date+" "+item.time).format('dddd, DD MMMM YYYY')
+                                            +" at "+moment(item.date+" "+item.time).format('hh:mm A');
+                                    })
+                                    $scope.scheduled = servicesScheduled;
+                                }
+                                else
+                                    $state.go('service.login');
+                            }
+                        ]
+                    }
+                }
+            })
+            .state('service.login',{
+                url: 'login',
+
+                views: {
+                    'list' : {
+                        templateUrl: config.server+'/api/angview/login?apikey='+api_key,
+                        resolve:{
+                            servicesLogin: function(servicesLogin){
+                                return servicesLogin
+                            }
+                        },
+                        controller: ['$scope','$state','$stateParams','servicesLogin','$timeout','$rootScope',
+                            function($scope,$state,$stateParams,servicesLogin,$timeout,$rootScope){
+                                if($rootScope.logged)
+                                    $state.transitionTo('service.calendar');
+
+                                $scope.login = function(user){
+                                    var log = servicesLogin.login($scope,$state,user.username,user.password);
+                                    log.then(function(resp){
+                                        if(resp.data.status=="success"){
+                                            $timeout(function() {
+                                                $rootScope.userType = resp.data.type;
+                                                $rootScope.userLogged = resp.data.data;
+                                                $rootScope.logged = true;
+                                                $scope.$apply();
+                                                $state.transitionTo('service.calendar');
+                                            });
+                                        }else{
+                                            alert(resp.data.message);
+                                        }
+
+                                    })
+                                }
                             }
                         ]
                     }

@@ -86,8 +86,29 @@ class EmployeesController extends \BaseController {
                 $model->phone = $formFields['phone'];
                 $model->phone_ext = $formFields['phone_ext'];
                 $model->subscription_id = Sentry::getUser()->subscription_id;
-                if($model->save())
+                if($model->save()){
+                    $employeeuser = new User;
+                    $validatore = Validator::make($formFields,User::$rulesCreateEmployee);
+                    if($validatore->passes()){
+                        $employeeuser->first_name = $formFields['first'];//Input::get('first');
+                        $employeeuser->last_name = $formFields['last'];//Input::get('last');
+                        $employeeuser->email = $formFields['email'];//Input::get('email'); ;
+                        $employeeuser->username = $formFields['username'];//Input::get('username');
+                        $employeeuser->password = $formFields['password'];
+                        $employeeuser->activated = true;
+                        if($employeeuser->save()){
+                            $employegroup = Sentry::findGroupById(2);
+                            if(!$employeeuser->addGroup($employegroup))
+                                return \Response::json(array("failed"=>true,"flashMessage"=>"Create Employee Failed. Update group error.","message"=>$employeeuser->validationErrors));
+                            $model->user_id = $employeeuser->id;
+                            $model->save();
+                        }else
+                            return \Response::json(array("failed"=>true,"flashMessage"=>"Create Employee Failed.","message"=>$employeeuser->validationErrors));
+
+                    }else
+                        return \Response::json(array("failed"=>true,"flashMessage"=>"Create Employee Failed.","message"=>$validatore->getMessageBag()->toArray()));
                     return \Response::json(array("success"=>true,"flashMessage"=>"Create Employee Success."));
+                }
                 else
                     return \Response::json(array("failed"=>true,"flashMessage"=>"Create Employee Failed.","message"=>$model->validationErrors));
             }else{

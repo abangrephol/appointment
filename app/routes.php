@@ -50,8 +50,67 @@ Route::api(['version'   =>  'v1' , 'prefix' => 'api','before'=>'apikey'],functio
             }
             return$fields;
         });
+        Route::get('scheduled',function(){
+            $type=Input::get('type');
+            $id=Input::get('id');
+            if(!isset($type)) $type='user';
+            if($type=="employee"){
+                $services = User::find($id)->hasManyThrough('appointmentservice','employee')->orderBy('date','desc')->get();
+                $schedules = array();
+                foreach($services as $service){
+                    $schedules[] = array(
+                        'id'=>$service->appointment_id,
+                        'serviceName'=>$service->service->name,
+                        'time'=>$service->time,
+                        'date'=>$service->date,
+                        'datetime'=>'',
+                        'customer'=> Customer::find($service->appointment->customer_id)
+                    );
+                }
+                return $schedules;
+            }
+
+        });
+        Route::post('login',function(){
+            try
+            {
+                // Login credentials
+                $username=Input::json('username');
+                $password=Input::json('password');
+                $user = Sentry::authenticate(array("username"=>$username,"password"=>$password));
+                $employee = Sentry::findGroupByName('Employees');
+                $isEmployee = "user";
+                if($user->inGroup($employee)) $isEmployee="employee";
+                Sentry::login($user);
+                if(Sentry::check())
+                    return json_encode(array('data'=>Sentry::findUserByLogin($username),'type'=>$isEmployee,'status'=>'success'));
+                else
+                    return json_encode(array('message'=>"fail",'status'=>'fail'));
+            }
+            catch (Cartalyst\Sentry\Users\LoginRequiredException $e)
+            {
+                return json_encode(array('message'=>"Login field is required.",'status'=>'fail'));
+            }
+            catch (Cartalyst\Sentry\Users\PasswordRequiredException $e)
+            {
+                return json_encode(array('message'=>'Password field is required.','status'=>'fail'));
+            }
+            catch (Cartalyst\Sentry\Users\WrongPasswordException $e)
+            {
+                return json_encode(array('message'=>'Wrong password, try again.','status'=>'fail'));
+            }
+            catch (Cartalyst\Sentry\Users\UserNotFoundException $e)
+            {
+                return json_encode(array('message'=>'User was not found.','status'=>'fail'));
+            }
+            catch (Cartalyst\Sentry\Users\UserNotActivatedException $e)
+            {
+                return json_encode(array('message'=>'User is not activated.','status'=>'fail'));
+            }
+        });
         //return API::response()->array(Input::json('services'))->statusCode(200);
     });
+
     Route::group(array('prefix'=>'angview'),function(){
         Route::get('index','AngularController@index');
         Route::get('services','AngularController@services');
@@ -60,6 +119,8 @@ Route::api(['version'   =>  'v1' , 'prefix' => 'api','before'=>'apikey'],functio
         Route::get('cart','AngularController@cart');
         Route::get('checkout','AngularController@checkout');
         Route::get('makeAppointment','AngularController@makeAppointment');
+        Route::get('login','AngularController@login');
+        Route::get('calendar','AngularController@calendar');
     });
     Route::get('/','SiteController@iframe');
 });
@@ -68,6 +129,7 @@ Route::get('mail',function(){
         $message->to('abang.zeze@gmail.com', 'Yanto')->subject('Welcome to the Laravel 4 Auth App!');
     });
 });
+
 Route::get('login', array('as'=>'login','uses'=>"SiteController@login") );
 Route::get('loginAPI',array(function(){
     //if(Sentry::check())

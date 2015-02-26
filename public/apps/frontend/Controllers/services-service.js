@@ -18,6 +18,41 @@ angular.module('appSys.services.service', [
         };
         return factory;
     }])
+    .factory('servicesLogin',['$http','$q',function($http,$q){
+        return {
+            login: function($scope,$state,user,pass){
+                return $http({
+                    method: 'POST',
+                    url: config.apiPath+'services/login?apikey='+api_key,
+                    headers: { 'Content-Type' : 'application/x-www-form-urlencoded' },
+                    data: {username:user,password:pass}
+                })
+
+            }
+        }
+    }])
+    .factory('servicesScheduled', ['$http', 'utils','$rootScope', function ($http, utils,$rootScope) {
+        var path = config.apiPath+'services/scheduled?type='+$rootScope.userType+'&id='+$rootScope.userLogged.id+'&apikey='+api_key;
+        var servicesScheduled = $http.get(path).then(function (resp) {
+            return resp.data;
+        });
+
+        var factory = {};
+        factory.all = function () {
+            return servicesScheduled;
+        };
+        factory.get = function (id) {
+            return servicesScheduled.then(function(){
+                return utils.findById(contacts, id);
+            })
+        };
+        factory.getByDate = function (date) {
+            return servicesScheduled.then(function(){
+                return utils.findByDate(contacts, date);
+            })
+        };
+        return factory;
+    }])
     .factory('availableTime',['$http',function($http){
         var path = config.apiPath+''
     }])

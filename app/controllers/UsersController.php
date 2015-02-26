@@ -13,7 +13,7 @@ class UsersController extends \BaseController {
     public function getDatatableAll()
     {
 
-        return Datatable::collection(User::all()) //array('id','first','last','email','username','is_active')
+        return Datatable::collection(Sentry::findAllUsersInGroup(Sentry::findGroupByName('Admins'))) //array('id','first','last','email','username','is_active')
             ->showColumns('first_name', 'last_name','email','username')
             ->addColumn('active', function($model){
                 if($model->activated)

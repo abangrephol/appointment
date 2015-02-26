@@ -30,6 +30,15 @@ class User extends \Cartalyst\Sentry\Users\Eloquent\User implements UserInterfac
         'password_confirmation' => 'alpha_num|between:4,8',
 
     );
+    public static $rulesCreateEmployee = array(
+        'first'                 => 'required|between:4,50',
+        'last'                  => 'between:4,50',
+        'email'                 => 'required|email',
+        'username'              => 'required|alpha_num|min:5',
+        'password'              => 'required|alpha_num|min:5|confirmed',
+        'password_confirmation' => 'alpha_num|between:4,8',
+
+    );
     public  static  $rulesUpdate = array(
         'first_name'                 => 'required|between:4,50',
         'last_name'                  => 'between:4,50',

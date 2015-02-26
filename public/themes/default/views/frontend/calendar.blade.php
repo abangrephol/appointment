@@ -1,9 +1,10 @@
-<div  ng-controller="datepicker">
+<div class="row">
     <div class="col-xs-12">
         <a ui-sref="service.list" class="btn btn-black btn-sm mb20"><i class="fa fa-chevron-left mr5"></i>&nbsp;Back to services</a>
-        <a ui-sref="service.cart" class="btn btn-black btn-sm mb20"><i class="fa fa-shopping-cart mr5"></i>&nbsp;Confirmation</a>
-        <a ui-sref="service.login" class="btn btn-black btn-sm mb20"><i class="fa fa-calendar-o mr5"></i>&nbsp;My Calendar</a>
+        <a ui-sref="service.calendar" class="btn btn-black btn-sm mb20"><i class="fa fa-calendar-o mr5"></i>&nbsp;My Calendar</a>
     </div>
+</div>
+<div class="row">
     <div class="col-xs-12 col-sm-4">
         <div class="panel panel-default panel-f">
             <div class="panel-heading">
@@ -19,36 +20,30 @@
 
     </div>
     <div class="col-xs-12 col-sm-8">
-        <div class="panel panel-default panel-f">
+        <div class="panel panel-default panel-f ">
             <div class="panel-heading">
                 <div class="panel-btns pull-right">
 
                 </div>
                 <h2 class="panel-title">
-                    @{{ service.name }}
+                    Your Schedule
                 </h2>
 
 
             </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <p>@{{ service.description }}</p>
-                        <div class="well well-sm inblock"><i class="fa fa-tag"></i>&nbsp;{{ Setting::get(Session::get('sid')[0].'.app.currency') }} @{{ service.price }}</div>
-                        <div class="well well-sm inblock"><i class="fa fa-time"></i>&nbsp;@{{ service.duration }} Minutes </div>
-                    </div>
-
-                </div>
-                <div class="row">
-                    <div class="col-xs-12">
-                        <p class="text-info">Select @{{ selectText }} to make appointment</p>
-                    </div>
-
-                    <div class="col-xs-12">
-                        <div ui-view="time" class="slide-reveal tableTime" ></div>
-                    </div>
-
-                </div>
+            <div class=" panel-body" ui-view="schedule">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Service</th>
+                        <th>Customer Name</th>
+                        <th>Date & Time</th>
+                    </tr>
+                    <tr ng-repeat="schedule in scheduled">
+                        <td>@{{schedule.serviceName}}</td>
+                        <td>@{{schedule.customer.first}} @{{schedule.customer.last}}</td>
+                        <td>@{{schedule.datetime}}</td>
+                    </tr>
+                </table>
             </div>
 
         </div>
@@ -65,11 +60,11 @@
 
     <table role="grid" aria-labelledby="@{{uniqueId}}-title" aria-activedescendant="@{{activeDateId}}" class="col-xs-12">
         <thead>
-            <tr>
-                <th><button type="button" class="btn btn-default btn-date pull-left btn-block" ng-click="move(-1)" tabindex="-1"><i class="fa fa-chevron-left"></i></button></th>
-                <th colspan="@{{5 + showWeeks}}"><button id="@{{uniqueId}}-title" role="heading" aria-live="assertive" aria-atomic="true" type="button" class="btn btn-default btn-date btn-block" ng-click="toggleMode()" tabindex="-1"><strong>@{{title}}</strong></button></th>
-                <th><button type="button" class="btn btn-default btn-date pull-right btn-block" ng-click="move(1)" tabindex="-1"><i class="fa fa-chevron-right"></i></button></th>
-            </tr>
+        <tr>
+            <th><button type="button" class="btn btn-default btn-date pull-left btn-block" ng-click="move(-1)" tabindex="-1"><i class="fa fa-chevron-left"></i></button></th>
+            <th colspan="@{{5 + showWeeks}}"><button id="@{{uniqueId}}-title" role="heading" aria-live="assertive" aria-atomic="true" type="button" class="btn btn-default btn-date btn-block" ng-click="toggleMode()" tabindex="-1"><strong>@{{title}}</strong></button></th>
+            <th><button type="button" class="btn btn-default btn-date pull-right btn-block" ng-click="move(1)" tabindex="-1"><i class="fa fa-chevron-right"></i></button></th>
+        </tr>
         </thead>
         <tbody>
 

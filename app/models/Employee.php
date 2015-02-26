@@ -11,7 +11,9 @@ class Employee extends Ardent {
     protected $table = 'employees';
 
     protected $dates = ['deleted_at'];
-
+    public static $relationsData = array(
+        'user'  => array(self::BELONGS_TO, 'User')
+    );
     protected $fillable = [];
 
     public static $rulesCreate = array(
