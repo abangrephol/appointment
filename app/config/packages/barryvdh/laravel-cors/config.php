@@ -47,7 +47,8 @@ return array(
         'allow_headers'=> array('*'),
         'allow_methods'=> array('*'),
         'expose_headers'=> array(),
-        'max_age' => 0
+        'max_age' => 0,
+        'hosts' => array(),
     ),
 
     'paths' => array(
@@ -56,7 +57,8 @@ return array(
             'allow_origin'=> array('*'),
             'allow_headers'=> array('*'),
             'allow_methods'=> array('POST', 'PUT', 'GET', 'DELETE','OPTIONS'),
-            'max_age' => 0
+            'max_age' => 3600,
+            'hosts' => array('api.*'),
         )
     ),
 

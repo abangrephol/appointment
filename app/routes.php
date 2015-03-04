@@ -55,7 +55,7 @@ Route::api(['version'   =>  'v1' , 'prefix' => 'api','before'=>'apikey'],functio
             $id=Input::get('id');
             if(!isset($type)) $type='user';
             if($type=="employee"){
-                $services = User::find($id)->hasManyThrough('appointmentservice','employee')->orderBy('date','desc')->get();
+                $services = User::find($id)->hasManyThrough('AppointmentService','Employee')->orderBy('date','desc')->get();
                 $schedules = array();
                 foreach($services as $service){
                     $schedules[] = array(
