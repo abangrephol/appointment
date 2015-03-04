@@ -52,7 +52,7 @@ return array(
 
     'paths' => array(
         '^/' => array(
-            'allow_credentials' => true,
+            'allow_credentials' => false,
             'allow_origin'=> array('*'),
             'allow_headers'=> array('*'),
             'allow_methods'=> array('POST', 'PUT', 'GET', 'DELETE','OPTIONS'),
