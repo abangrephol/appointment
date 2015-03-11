@@ -1,4 +1,4 @@
-{{ Form::model($data, array('route' => array('appointment.update', $data->id),'method'=>'PUT','class'=>'form form-horizontal')) }}
+{{ Form::model($data, array('route' => array('appointments.update', $data->id),'method'=>'PUT','class'=>'form form-horizontal')) }}
 <div class="panel-heading">
     <h4 class="panel-title">{{ Theme::get('title') }}</h4>
 </div>

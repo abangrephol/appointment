@@ -61,7 +61,7 @@
 
 </div>
 <div class="row">
-    {{ Form::open(array('route' => array('appointment.store'),'class'=>'form-confirm form-horizontal')) }}
+    {{ Form::open(array('route' => array('appointments.store'),'class'=>'form-confirm form-horizontal')) }}
     <div class="col-sm-6">
         <div class="panel panel-alt panel-default">
             <div class="panel-heading">
