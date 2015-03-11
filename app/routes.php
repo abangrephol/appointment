@@ -209,7 +209,7 @@ Route::group(array('before'=>'auth'),function(){
     });
 
     Route::resource("apikey","ApiKeysController");
-    Route::resource("appointment","AppointmentsController");
+    Route::resource("appointments","AppointmentsController");
     Route::resource("appservice","AppointmentServicesController");
     Route::resource("customer","CustomersController");
     Route::resource("employee","EmployeesController");
@@ -220,9 +220,9 @@ Route::group(array('before'=>'auth'),function(){
     Route::resource("user","UsersController");
     Route::resource("customform","CustomFormsController");
 
-    Route::post("appointment/{id}","AppointmentsController@update");
-    Route::get('/appointment/delete/{id}',"AppointmentsController@delete");
-    Route::delete('appointment/delete/{id}',"AppointmentsController@destroy");
+    Route::post("appointments/{id}","AppointmentsController@update");
+    Route::get('/appointments/delete/{id}',"AppointmentsController@delete");
+    Route::delete('appointments/delete/{id}',"AppointmentsController@destroy");
 
     Route::post("user/{id}","UsersController@update");
     Route::get('/user/delete/{id}',"UsersController@delete");

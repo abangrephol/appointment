@@ -2,7 +2,7 @@
 <!--h5 class="subtitle">Main Menu</h5-->
 <ul class="nav nav-pills nav-stacked nav-email mb20 menu-icon">
     <li class="active"><a href="#dashboard" data-toggle="tab" data-toggle="tab" data-remote-url="{{ url('dashboard') }}"><i class="fa fa-home"></i>Dashboard</a></li>
-    <li class=""><a href="#app" data-toggle="tab" data-remote-url="{{ url('appointment') }}">Appointments</a></li>
+    <li class=""><a href="#app" data-toggle="tab" data-remote-url="{{ url('appointments') }}">Appointments</a></li>
     <li class=""><a href="#service" data-toggle="tab" data-remote-url="{{ url('service') }}">Services</a></li>
     <li class=""><a href="#employee" data-toggle="tab" data-remote-url="{{ url('employee') }}">Employees</a></li>
     <li class=""><a href="#customer" data-toggle="tab" data-remote-url="{{ url('customer') }}">Customers</a></li>
