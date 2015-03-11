@@ -4,7 +4,11 @@
 </div>
 <div class="panel-body">
 <div class="row">
-    <div class="col-sm-6">
+    <div class="alert alert-success hidden">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <div id="successMessage"></div>
+    </div>
+    <div class="col-sm-5">
         <div class="panel panel-alt panel-default">
             <div class="panel-heading">
                 <h5 class="panel-title-alt">Customer Information</h5>
@@ -43,7 +47,7 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-7">
         <div class="panel panel-alt panel-default">
             <div class="panel-heading">
                 <h5 class="panel-title-alt">Appointment Service</h5>
@@ -55,6 +59,7 @@
                         <tr>
                             <th>Service Name</th>
                             <th>Date & Time</th>
+                            <th>Employee</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -63,6 +68,7 @@
                         <tr>
                             <td>{{ $service->service->name }}</td>
                             <td><span class="app-time">{{ $service->date }} {{ $service->time }}</span> </td>
+                            <td>{{ Form::select('employee_id_'.$service->id,$employee,$service->employee_id,array('class'=>'form-control'))}}</td>
                         </tr>
                         @empty
                         <tr>
@@ -79,7 +85,7 @@
 
 </div>
 <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-5">
         <div class="panel panel-alt panel-default">
             <div class="panel-heading">
                 <h5 class="panel-title-alt">Payment Information</h5>
@@ -129,7 +135,7 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-7">
         <div class="panel panel-alt panel-default">
             <div class="panel-heading">
                 <h5 class="panel-title-alt">Additional Information</h5>
@@ -149,6 +155,7 @@
     </div>
 
 </div>
+
 </div>
     <div class="panel-footer">
         <div class="row">

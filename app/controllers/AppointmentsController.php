@@ -290,7 +290,12 @@ class AppointmentsController extends \BaseController {
         $theme->set('title','Inspect Appointment');
         $model = Appointment::find($id);
         $services = $model->appointmentService;
-        $data = array("data"=>$model,"services"=>$services);
+        $employees = Subscription::find(Sentry::getUser()->subscription_id)->employee()->get();
+        $arrEmployee = [""=>"Not Assign"];
+        foreach($employees as $employee){
+            $arrEmployee[$employee->id] = $employee->first." ".$employee->last;
+        }
+        $data = array("data"=>$model,"services"=>$services,"employee"=>$arrEmployee);
 
         return $theme->layout('form')->scope('appointments.edit',$data)->render();
 	}
@@ -304,7 +309,25 @@ class AppointmentsController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+        DB::beginTransaction();
+        try{
+            $inputData = Input::get('formData');
+            parse_str($inputData, $formFields);
+            $model = Appointment::find($id);
+            foreach($model->appointmentService as $service){
+                $serviceModel = AppointmentService::find($service->id);
+                if(isset($formFields['employee_id_'.$service->id])){
+                    $serviceModel->employee_id =$formFields['employee_id_'.$service->id];
+                    $serviceModel->save();
+                }
+
+            }
+            DB::commit();
+            return \Response::json(array("success"=>true,"flashMessage"=>"Update Appointment Success."));
+        }catch (\Exception $e){
+            DB::rollBack();
+            return API::response()->array(array("failed"=>true,"flashMessage"=>"Create Appointment Error. Database error.","message"=>$e->getMessage()));
+        }
 	}
 
 	/**
