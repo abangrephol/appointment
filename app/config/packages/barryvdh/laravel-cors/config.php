@@ -42,24 +42,23 @@ return array(
         ),
     ),*/
     'defaults' =>  array(
-        'allow_credentials' => true,
+        'allow_credentials' => false,
         'allow_origin'=> array('*'),
         'allow_headers'=> array('*'),
         'allow_methods'=> array('*'),
-        'expose_headers'=> array(),
-        'max_age' => 0,
+        'max_age' => 3600,
         'hosts' => array(),
     ),
 
     'paths' => array(
-        '^/' => array(
+        /*'^/' => array(
             'allow_credentials' => false,
             'allow_origin'=> array('*'),
             'allow_headers'=> array('*'),
             'allow_methods'=> array('POST', 'PUT', 'GET', 'DELETE','OPTIONS'),
             'max_age' => 3600,
             'hosts' => array('api.*'),
-        )
+        )*/
     ),
 
 );
