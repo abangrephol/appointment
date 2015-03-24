@@ -6,14 +6,14 @@
     <li class=""><a href="#service" data-toggle="tab" data-remote-url="{{ url('service') }}">Services</a></li>
     <li class=""><a href="#employee" data-toggle="tab" data-remote-url="{{ url('employee') }}">Employees</a></li>
     <li class=""><a href="#customer" data-toggle="tab" data-remote-url="{{ url('customer') }}">Customers</a></li>
-    <li class=""><a href="#payment" data-toggle="tab" data-remote-url="{{ url('payment') }}">Payments</a></li>
+    <!--li class=""><a href="#payment" data-toggle="tab" data-remote-url="{{ url('payment') }}">Payments</a></li-->
 
     <li><span class="">&nbsp;</span></li>
 
     <li class=""><a href="#user" data-toggle="tab" data-remote-url="{{ url('user') }}">Users</a></li>
-    <li class=""><a href="#apikey" data-toggle="tab" data-remote-url="{{ url('apikey') }}">Api Key</a></li>
+    <!--li class=""><a href="#apikey" data-toggle="tab" data-remote-url="{{ url('apikey') }}">Api Key</a></li-->
     <li class=""><a href="#user" data-toggle="tab" data-remote-url="{{ url('customform') }}">Custom Forms</a></li>
-    <li class=""><a href="#serviceloc" data-toggle="tab" data-remote-url="{{ url('serviceloc') }}">Service Locations</a></li>
+    <!--li class=""><a href="#serviceloc" data-toggle="tab" data-remote-url="{{ url('serviceloc') }}">Service Locations</a></li-->
     <li class=""><a href="#subscription" data-toggle="tab" data-remote-url="{{ url('subscription') }}">Subcriptions</a></li>
     <li><span class="">&nbsp;</span></li>
     <li class=""><a href="#setting" data-toggle="tab" data-remote-url="{{ url('setting') }}">Settings</a></li>
