@@ -1,7 +1,11 @@
 <div ng-show='cartAdded' class='mb20 text-success'>Successfull make an appointment. View <b><a ui-sref='service.cart'>Cart</a></b> to checkout.</div>
-<div ng-hide='cartAdded' class='row col-sm-12 mb20'><span class='well well-sm mr5 mb5'>Start time : @{{ startTime }}</span>
-<span class='well well-sm mr5 mb5'>End time : @{{ endTime }}</span></div>
-<span ng-repeat="form in forms" ng-hide='cartAdded'>
+<div ng-show="notAvailable">
+    <span>Sorry, No available staff for selected time.</span>
+</div>
+<div ng-hide="notAvailable">
+    <div ng-hide='cartAdded' class='row col-sm-12 mb20'><span class='well well-sm mr5 mb5'>Start time : @{{ startTime }}</span>
+        <span class='well well-sm mr5 mb5'>End time : @{{ endTime }}</span></div>
+        <span ng-repeat="form in forms" ng-hide='cartAdded'>
     <div class="mb10">
 
 
@@ -42,4 +46,5 @@
     </div>
 
 </span>
-<div class='row col-sm-12'><a class='btn btn-sm' ng-click='makeAppointment()'>Make Appointment</a></div>
+    <div class='row col-sm-12'><a class='btn btn-sm' ng-click='makeAppointment()'>Make Appointment</a></div>
+</div>

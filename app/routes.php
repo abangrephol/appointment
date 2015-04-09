@@ -48,7 +48,17 @@ Route::api(['version'   =>  'v1' , 'prefix' => 'api','before'=>'apikey'],functio
                     'fields'=>$tmpFields
                 );
             }
-            return$fields;
+            return $fields;
+        });
+        Route::get('available/{id}/{date}/{time}',function($id,$date,$time){
+            $sid = Session::get('sid')[0];
+
+            $available = DB::select(DB::raw("SELECT if((SELECT COUNT(*) AS empcount FROM employees e WHERE e.subscription_id= ".$sid." AND e.deleted_at IS NULL) - COUNT(aps.employee_id)>0,TRUE,FALSE) as employee_left"
+                        ." FROM appointments a INNER JOIN appointment_services aps ON a.id=aps.appointment_id"
+                        ." WHERE a.subscription_id = ".$sid." AND aps.service_id = ".$id." AND aps.`time` = '".$time."' and aps.`date` = '".$date."'"
+                        ." AND (aps.employee_id IS NOT NULL AND aps.employee_id != 0) GROUP BY aps.service_id"));
+            return json_encode($available);
+
         });
         Route::get('scheduled',function(){
             $type=Input::get('type');

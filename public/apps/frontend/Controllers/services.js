@@ -78,10 +78,18 @@ $service = angular.module('appSys.services', [
                 url : '/{date}',
                 views :{
                     "time" : {
+                        resolve:{
+                            serviceCustomForm: function(serviceCustomForm){
+                                return serviceCustomForm
+                            }
+                        },
                         templateUrl: config.server+'/api/angview/timeAvailable?apikey='+api_key,
-                        controller: ['$scope', '$stateParams','$localStorage',
-                            function (  $scope,   $stateParams ,$localStorage) {
-
+                        controller: ['$scope', '$stateParams','serviceCustomForm','$localStorage',
+                            function (  $scope,   $stateParams,serviceCustomForm ,$localStorage) {
+                                var getCustomForm = serviceCustomForm.getFields($scope.service.id);
+                                getCustomForm.then(function(resp){
+                                    $scope.forms = resp.data;
+                                });
                                 $scope.selectedTime = null;
                                 $scope.$parent.selectText = "time";
                                 $scope.selectedDate = $stateParams.date;
@@ -132,21 +140,30 @@ $service = angular.module('appSys.services', [
                 views : {
                     "make" : {
                         resolve:{
-                            serviceCustomForm: function(serviceCustomForm){
-                                return serviceCustomForm
+                            serviceData: function(serviceData){
+                                return serviceData
                             }
                         },
                         templateUrl: config.server+'/api/angview/makeAppointment?apikey='+api_key,
 
-                        controller: ['$scope','$stateParams','utils','serviceCustomForm',
-                            function($scope,$stateParams,utils,serviceCustomForm){
-                                var getCustomForm = serviceCustomForm.getFields($scope.service.id);
-                                getCustomForm.then(function(resp){
-                                    $scope.forms = resp.data;
+                        controller: ['$scope','$stateParams','utils','serviceData',
+                            function($scope,$stateParams,utils,serviceData){
+                                var getData = serviceData.getAvailable($scope.service.id,$scope.selectedDate,$scope.selectedTime.data);
+                                $scope.notAvailable = false;
+                                getData.then(function(resp){
+                                    if(resp.data.length>0)
+                                    if(resp.data[0]['employee_left']==0)
+                                    {
+                                        $scope.notAvailable=true;
+
+                                    }
+
                                 });
+
                                 $scope.cartAdded = false;
                                 $scope.cartAdd= function(state){
                                     $scope.cartAdded = state;
+
                                 }
                                 $scope.startTime = $scope.selectedTime.time;
                                 $scope.endTime =  $scope.selectedTime.timeEnd;

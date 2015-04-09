@@ -66,6 +66,16 @@ angular.module('appSys.services.service', [
             }
         }
     }])
+    .factory('serviceData',['$http','$q',function($http,$q){
+        return {
+            getAvailable: function(id,date,time){
+                //var deferred = $q.defer();
+                return $http.get(config.apiPath+'services/available/'+id+'/'+date+'/'+time+'?apikey='+api_key)
+
+                //return deferred.promise;
+            }
+        }
+    }])
     .factory('serviceRes',['$http',function($http){
         return {
                 save: function(data,customer,payment){
